@@ -1,0 +1,235 @@
+/* --- NEW: Featured Project Layout --- */
+
+.projects-grid {
+    /* Resetting the old grid since we are switching to rows for featured items */
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    margin-top: 50px;
+}
+
+.featured-project {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+    gap: 10px;
+}
+
+/* 1. Visual Side (Video/Browser) */
+.project-visual {
+    grid-column: 1 / 8;
+    /* Takes up left side */
+    position: relative;
+    z-index: 10;
+}
+
+/* Determine direction for alternating layout */
+.featured-project:nth-of-type(2n+1) .project-visual {
+    grid-column: 1 / 8;
+}
+
+.featured-project:nth-of-type(2n) .project-visual {
+    grid-column: 6 / -1;
+    /* Right side for even items */
+}
+
+/* Browser Frame */
+.browser-frame {
+    background: var(--light-navy);
+    border-radius: 8px;
+    box-shadow: 0 20px 50px -15px rgba(2, 12, 27, 0.7);
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid var(--lightest-navy);
+}
+
+.browser-header {
+    height: 30px;
+    background: #0f1c2e;
+    /* Slightly darker than card */
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    gap: 8px;
+    border-bottom: 1px solid var(--lightest-navy);
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.dot.red {
+    background: #ff5f56;
+}
+
+.dot.yellow {
+    background: #ffbd2e;
+}
+
+.dot.green {
+    background: #27c93f;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    background: black;
+    /* Placeholder while loading */
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* 2. Content Side */
+.project-content {
+    grid-column: 7 / -1;
+    /* Overlaps visual slightly */
+    text-align: right;
+    z-index: 20;
+    /* Sits on top */
+    pointer-events: none;
+    /* Let clicks pass through empty space */
+}
+
+.project-content * {
+    pointer-events: all;
+    /* Re-enable clicks on content */
+}
+
+.featured-project:nth-of-type(2n+1) .project-content {
+    grid-column: 7 / -1;
+    text-align: right;
+}
+
+.featured-project:nth-of-type(2n) .project-content {
+    grid-column: 1 / 7;
+    text-align: left;
+}
+
+
+.featured-label {
+    font-family: var(--font-mono);
+    color: var(--green);
+    font-size: 13px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.featured-title {
+    color: var(--lightest-slate);
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.featured-title a:hover {
+    color: var(--green);
+}
+
+.featured-desc {
+    background-color: var(--light-navy);
+    color: var(--light-slate);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Ensure card glow effect (from earlier) works here too if we want, or just keep it simple */
+
+.featured-tech-list {
+    display: flex;
+    justify-content: flex-end;
+    /* Align to side */
+    gap: 20px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--light-slate);
+    margin-bottom: 25px;
+}
+
+.featured-project:nth-of-type(2n) .featured-tech-list {
+    justify-content: flex-start;
+}
+
+.featured-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    color: var(--lightest-slate);
+}
+
+.featured-project:nth-of-type(2n) .featured-links {
+    justify-content: flex-start;
+}
+
+.featured-links a svg {
+    width: 22px;
+    height: 22px;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .projects-grid {
+        gap: 70px;
+    }
+
+    .featured-project {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .project-visual {
+        width: 100%;
+        margin-bottom: 20px;
+        box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+    }
+
+    .project-content {
+        width: 100%;
+        text-align: left;
+        padding: 0;
+    }
+
+    .featured-project:nth-of-type(2n) .project-content {
+        text-align: left;
+    }
+
+    .featured-tech-list {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .featured-project:nth-of-type(2n) .featured-tech-list {
+        justify-content: flex-start;
+    }
+
+    .featured-links {
+        justify-content: flex-start;
+    }
+
+    .featured-project:nth-of-type(2n) .featured-links {
+        justify-content: flex-start;
+    }
+
+    .featured-desc {
+        background-color: transparent;
+        padding: 0;
+        box-shadow: none;
+        margin-bottom: 15px;
+    }
+}
