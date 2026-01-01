@@ -502,7 +502,7 @@ p {
 .big-heading {
     text-align: center;
     font-size: clamp(40px, 5vw, 60px);
-
+    margin-bottom: 20px;
     color: var(--lightest-slate);
 }
 
@@ -867,9 +867,18 @@ p {
     color: var(--lightest-slate);
 }
 
+.featured-links a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 500;
+}
+
 .featured-links a svg {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
 }
 
 /* Social Side Bar */
