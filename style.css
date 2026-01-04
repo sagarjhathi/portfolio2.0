@@ -491,6 +491,10 @@ p {
 }
 
 /* Contact Section */
+#contact {
+    padding-bottom: 30px;
+}
+
 .center-title {
     justify-content: center;
 }
@@ -512,7 +516,7 @@ p {
 
 /* Footer */
 .footer {
-    padding: 60px 20px 40px;
+    padding: 40px 20px 40px;
     background-color: var(--navy);
     /* Ensure seamless blend */
     text-align: center;
