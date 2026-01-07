@@ -178,6 +178,10 @@ p {
     color: var(--green);
 }
 
+.nav-links a.active {
+    color: var(--green);
+}
+
 .resume-btn {
     margin-left: 30px;
     color: var(--green) !important;
