@@ -1,4 +1,5 @@
 :root {
+    /* --- DARK THEME (Original) --- */
     --navy: #0a192f;
     --light-navy: #112240;
     --lightest-navy: #233554;
@@ -7,6 +8,51 @@
     --lightest-slate: #ccd6f6;
     --white: #e6f1ff;
     --green: #64ffda;
+
+    /* --- WHITE THEME (Creative Clean) --- */
+    /* 
+       Theory: 
+       - Backgrounds: Off-white (#f8f9fa) for main to reduce glare, Pure white (#ffffff) for cards to pop.
+       - Text: Deep Navy/Slate (#334155, #1e293b) -> High contrast and professional, softer than pure black.
+       - Accents: Teal (#0d9488) -> Vibrant, trustworthy, and matches the "creative" vibe.
+    */
+    /*
+    --navy: #f8f9fa;
+    --light-navy: #ffffff;
+    --lightest-navy: #e2e8f0;
+    --slate: #64748b;
+    --light-slate: #475569;
+    --lightest-slate: #1e293b;
+    --white: #0f172a;
+    /* Highlights/Strongest Text: Almost Black */
+    --green: #0d9488;
+    /* Accent: Vibrant Teal */
+
+    /* Specific Component Overrides for White Theme */
+    --spotlight-rgb: 13, 148, 136;
+    /* Teal Spotlight */
+    --card-glow-rgb: 13, 148, 136;
+    /* Teal Glow */
+    --browser-header-bg: #e2e8f0;
+    /* Light Browser Header */
+    */
+    /* Helper variables for RBGA usage */
+    --shadow-rgb: 2, 12, 27;
+    /* Dark Theme Shadow */
+    --green-rgb: 100, 255, 218;
+    /* Neon Green RGB */
+    --nav-bg-alpha: 0.85;
+    /* Dark Header Alpha */
+    --nav-bg-rgb: 10, 25, 47;
+    /* Dark Header RGB */
+
+    /* Specific Component Restorations (100% Fidelity) */
+    --spotlight-rgb: 29, 78, 216;
+    /* Original Blue Spotlight */
+    --card-glow-rgb: 255, 255, 255;
+    /* Original White Glow */
+    --browser-header-bg: #0f1c2e;
+    /* Original Dark Browser Header */
 
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     --font-mono: 'Fira Code', 'Roboto Mono', monospace;
@@ -116,14 +162,14 @@ p {
     left: 0;
     width: 100%;
     height: var(--nav-height);
-    background-color: rgba(10, 25, 47, 0.85);
+    background-color: rgba(var(--nav-bg-rgb), var(--nav-bg-alpha));
     backdrop-filter: blur(10px);
     z-index: 1000;
     transition: var(--transition);
     display: flex;
     align-items: center;
     padding: 0 40px;
-    box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+    box-shadow: 0 10px 30px -10px rgba(var(--shadow-rgb), 0.7);
 }
 
 .header.scrolled-down {
@@ -133,7 +179,7 @@ p {
 .header.scrolled-up {
     transform: translateY(0);
     height: var(--nav-scroll-height);
-    box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+    box-shadow: 0 10px 30px -10px rgba(var(--shadow-rgb), 0.7);
 }
 
 .navbar {
@@ -193,7 +239,7 @@ p {
 }
 
 .resume-btn:hover {
-    background-color: rgba(100, 255, 218, 0.1);
+    background-color: rgba(var(--green-rgb), 0.1);
 }
 
 .hamburger {
@@ -274,7 +320,7 @@ p {
 }
 
 .social-btn:hover {
-    background-color: rgba(100, 255, 218, 0.1);
+    background-color: rgba(var(--green-rgb), 0.1);
     transform: translateY(-3px);
 }
 
@@ -565,7 +611,7 @@ p {
 }
 
 .footer-cta:hover {
-    background-color: rgba(100, 255, 218, 0.1);
+    background-color: rgba(var(--green-rgb), 0.1);
     transform: translateY(-3px);
 }
 
@@ -649,7 +695,7 @@ p {
         width: 75vw;
         background-color: var(--light-navy);
         z-index: 99;
-        box-shadow: -10px 0px 30px -15px rgba(2, 12, 27, 0.7);
+        box-shadow: -10px 0px 30px -15px rgba(var(--shadow-rgb), 0.7);
         padding: 50px;
     }
 
@@ -702,7 +748,7 @@ p {
     pointer-events: none;
     z-index: 9999;
     background: radial-gradient(600px circle at var(--cursor-x) var(--cursor-y),
-            rgba(29, 78, 216, 0.15),
+            rgba(var(--spotlight-rgb), 0.15),
             transparent 80%);
     opacity: 0;
     transition: opacity 0.5s ease;
@@ -727,7 +773,7 @@ p {
     padding: 1px;
     /* The border width */
     background: radial-gradient(800px circle at var(--cursor-x) var(--cursor-y),
-            rgba(255, 255, 255, 0.4),
+            rgba(var(--card-glow-rgb), 0.4),
             transparent 40%);
     -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
@@ -770,7 +816,7 @@ p {
 .browser-frame {
     background: var(--light-navy);
     border-radius: 8px;
-    box-shadow: 0 20px 50px -15px rgba(2, 12, 27, 0.7);
+    box-shadow: 0 20px 50px -15px rgba(var(--shadow-rgb), 0.7);
     overflow: hidden;
     transition: var(--transition);
     border: 1px solid var(--lightest-navy);
@@ -778,7 +824,7 @@ p {
 
 .browser-header {
     height: 30px;
-    background: #0f1c2e;
+    background: var(--browser-header-bg);
     display: flex;
     align-items: center;
     padding-left: 15px;

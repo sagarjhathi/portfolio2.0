@@ -37,7 +37,7 @@
 .browser-frame {
     background: var(--light-navy);
     border-radius: 8px;
-    box-shadow: 0 20px 50px -15px rgba(2, 12, 27, 0.7);
+    box-shadow: 0 20px 50px -15px rgba(var(--shadow-rgb), 0.7);
     overflow: hidden;
     transition: var(--transition);
     border: 1px solid var(--lightest-navy);
@@ -45,7 +45,7 @@
 
 .browser-header {
     height: 30px;
-    background: #0f1c2e;
+    background: var(--browser-header-bg);
     /* Slightly darker than card */
     display: flex;
     align-items: center;
@@ -142,7 +142,7 @@
     padding: 25px;
     border-radius: var(--border-radius);
     font-size: 16px;
-    box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+    box-shadow: 0 10px 30px -15px rgba(var(--shadow-rgb), 0.7);
     margin-bottom: 20px;
     position: relative;
 }
@@ -196,7 +196,7 @@
     .project-visual {
         width: 100%;
         margin-bottom: 20px;
-        box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+        box-shadow: 0 10px 30px -10px rgba(var(--shadow-rgb), 0.7);
     }
 
     .project-content {
