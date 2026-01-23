@@ -383,11 +383,11 @@ p {
 /* Skills Section */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 80px;
 }
 
-.skill-category h3 {
+.skill-category h4 {
     color: var(--lightest-slate);
     margin-bottom: 20px;
     font-size: 22px;
@@ -399,9 +399,9 @@ p {
 
 .skill-category li {
     font-family: var(--font-mono);
-    font-size: 14px;
+    font-size: 16px;
     color: var(--slate);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     position: relative;
     padding-left: 20px;
 }
