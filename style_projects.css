@@ -33,6 +33,10 @@
     /* Right side for even items */
 }
 
+.focus-list {
+    list-style-type: disc;
+    padding-left: 24px;
+}
 /* Browser Frame */
 .browser-frame {
     background: var(--light-navy);
