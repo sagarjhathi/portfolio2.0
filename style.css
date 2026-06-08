@@ -1002,9 +1002,9 @@ p {
         padding: 0;
         box-shadow: none;
     }
-    
-    .focus-list {
-    list-style-type: disc;
-    padding-left: 24px;
+
+    .about-content {
+    max-width: 900px;
+    margin: 0 auto;
 }
 }
