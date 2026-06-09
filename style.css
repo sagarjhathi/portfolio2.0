@@ -1007,4 +1007,47 @@ p {
     max-width: 900px;
     margin: 0 auto;
 }
+
+/* About Section */
+.about-content {
+    max-width: 850px;      /* controls wrapping */
+    margin: 0 auto;        /* moves block to center */
+}
+
+.about-text {
+    max-width: 850px;
+    line-height: 1.8;
+}
+
+.about-text p {
+    max-width: 850px;
+}
+
+/* Bullet list */
+.about-text ul {
+    max-width: 850px;
+    padding-left: 25px;
+    margin-top: 20px;
+}
+
+.about-text li {
+    margin-bottom: 18px;
+}
+
+.about-content {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.about-text {
+    line-height: 1.8;
+}
+
+.about-text ul {
+    padding-left: 25px;
+}
+
+.about-text li {
+    margin-bottom: 16px;
+}
 }
