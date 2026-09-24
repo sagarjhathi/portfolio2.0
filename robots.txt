@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sagarjhathi.github.io/portfolio2.0/sitemap.xml

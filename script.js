@@ -65,10 +65,17 @@ window.addEventListener('scroll', () => {
 
 // --- 2. Mobile Menu Toggle ---
 hamburger.addEventListener('click', toggleMenu);
+hamburger.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleMenu();
+    }
+});
 
 function toggleMenu() {
-    navLinks.parentElement.classList.toggle('nav-active');
+    const isActive = navLinks.parentElement.classList.toggle('nav-active');
     hamburger.classList.toggle('toggle');
+    hamburger.setAttribute('aria-expanded', isActive);
     document.body.classList.toggle('no-scroll');
 }
 

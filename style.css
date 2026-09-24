@@ -9,33 +9,25 @@
     --white: #e6f1ff;
     --green: #64ffda;
 
-    /* --- WHITE THEME (Creative Clean) --- */
-    /* 
-       Theory: 
+    /* --- WHITE THEME (Creative Clean) --- unused experiment, kept for reference
+       Theory:
        - Backgrounds: Off-white (#f8f9fa) for main to reduce glare, Pure white (#ffffff) for cards to pop.
        - Text: Deep Navy/Slate (#334155, #1e293b) -> High contrast and professional, softer than pure black.
        - Accents: Teal (#0d9488) -> Vibrant, trustworthy, and matches the "creative" vibe.
-    */
-    /*
-    --navy: #f8f9fa;
-    --light-navy: #ffffff;
-    --lightest-navy: #e2e8f0;
-    --slate: #64748b;
-    --light-slate: #475569;
-    --lightest-slate: #1e293b;
-    --white: #0f172a;
-    /* Highlights/Strongest Text: Almost Black */
-    --green: #0d9488;
-    /* Accent: Vibrant Teal */
 
-    /* Specific Component Overrides for White Theme */
-    --spotlight-rgb: 13, 148, 136;
-    /* Teal Spotlight */
-    --card-glow-rgb: 13, 148, 136;
-    /* Teal Glow */
-    --browser-header-bg: #e2e8f0;
-    /* Light Browser Header */
+       --navy: #f8f9fa;
+       --light-navy: #ffffff;
+       --lightest-navy: #e2e8f0;
+       --slate: #64748b;
+       --light-slate: #475569;
+       --lightest-slate: #1e293b;
+       --white: #0f172a;
+       --green: #0d9488;
+       --spotlight-rgb: 13, 148, 136;
+       --card-glow-rgb: 13, 148, 136;
+       --browser-header-bg: #e2e8f0;
     */
+
     /* Helper variables for RBGA usage */
     --shadow-rgb: 2, 12, 27;
     /* Dark Theme Shadow */
@@ -132,14 +124,6 @@ p {
 }
 
 /* Utilities */
-.mono-idx {
-    font-family: var(--font-mono);
-    color: var(--green);
-    font-size: var(--fz-md);
-    margin-right: 5px;
-    font-weight: 400;
-}
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -544,6 +528,10 @@ p {
 /* Contact Section */
 #contact {
     padding-bottom: 30px;
+}
+
+.text-center {
+    text-align: center;
 }
 
 .center-title {
