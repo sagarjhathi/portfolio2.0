@@ -1,5 +1,6 @@
 // DOM Elements
 const header = document.querySelector('.header');
+const scrollProgress = document.getElementById('scrollProgress');
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links'); // This is the container
 const navItems = document.querySelectorAll('.nav-links ol li a'); // Individual links
@@ -61,7 +62,14 @@ window.addEventListener('scroll', () => {
     }
     lastScrollY = window.scrollY;
     updateActiveLink();
+    updateScrollProgress();
 });
+
+function updateScrollProgress() {
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+    scrollProgress.style.width = `${progress}%`;
+}
 
 // --- 2. Mobile Menu Toggle ---
 hamburger.addEventListener('click', toggleMenu);

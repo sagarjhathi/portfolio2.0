@@ -107,6 +107,12 @@ ol {
     list-style: none;
 }
 
+:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
 h1,
 h2,
 h3,
@@ -137,6 +143,16 @@ p {
 .section {
     padding: 100px 0;
     margin: 0 auto;
+}
+
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: var(--green);
+    z-index: 1100;
 }
 
 /* Header & Nav */
@@ -251,6 +267,10 @@ p {
     margin: 0 auto;
 }
 
+.hero-section>.container {
+    width: 100%;
+}
+
 .hero-intro {
     font-family: var(--font-mono);
     color: var(--green);
@@ -272,6 +292,44 @@ p {
     color: var(--slate);
     line-height: 1.1;
     margin: 10px 0 0 0;
+}
+
+.hero-intro .type-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: bottom;
+    max-width: 100%;
+    border-right: 2px solid var(--green);
+    width: 0;
+}
+
+.hero-intro.visible .type-text {
+    animation:
+        typing 1s steps(15, end) 0.2s forwards,
+        blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 15ch;
+    }
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: var(--green);
+    }
 }
 
 .hero-desc {
@@ -808,6 +866,12 @@ p {
     overflow: hidden;
     transition: var(--transition);
     border: 1px solid var(--lightest-navy);
+}
+
+.featured-project:hover .browser-frame {
+    transform: translateY(-6px);
+    border-color: var(--green);
+    box-shadow: 0 25px 60px -15px rgba(var(--shadow-rgb), 0.85), 0 0 0 1px rgba(var(--green-rgb), 0.25);
 }
 
 .browser-header {
