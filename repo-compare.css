@@ -336,3 +336,109 @@
         padding: 12px 14px;
     }
 }
+
+/* ---------- Per-stack accents + code preview ---------- */
+.repo-card--java {
+    --accent: #ffa94d;
+    --accent-soft: rgba(255, 169, 77, 0.1);
+    --accent-line: rgba(255, 169, 77, 0.4);
+}
+
+.repo-card--ts {
+    --accent: #5aa9ff;
+    --accent-soft: rgba(90, 169, 255, 0.1);
+    --accent-line: rgba(90, 169, 255, 0.4);
+}
+
+.repo-card--java,
+.repo-card--ts {
+    background: linear-gradient(160deg, var(--accent-soft) 0%, var(--light-navy) 45%);
+}
+
+.repo-card--java::before,
+.repo-card--ts::before {
+    background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.repo-card--java:hover,
+.repo-card--ts:hover {
+    border-color: var(--accent);
+}
+
+.repo-card--java .repo-mono,
+.repo-card--ts .repo-mono {
+    background: var(--accent-soft);
+    border-color: var(--accent-line);
+    color: var(--accent);
+}
+
+.repo-card--java .repo-points li::before,
+.repo-card--ts .repo-points li::before,
+.repo-card--java .repo-tech li,
+.repo-card--ts .repo-tech li {
+    color: var(--accent);
+}
+
+.repo-card--java .repo-tech li,
+.repo-card--ts .repo-tech li {
+    background: var(--accent-soft);
+}
+
+.repo-card--java .repo-btn,
+.repo-card--ts .repo-btn {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.repo-card--java .repo-btn:hover,
+.repo-card--ts .repo-btn:hover {
+    background: var(--accent-soft);
+}
+
+.repo-card--java .repo-btn.primary,
+.repo-card--ts .repo-btn.primary {
+    background: var(--accent);
+    color: var(--navy);
+}
+
+.repo-card--java .repo-link:focus-visible::after,
+.repo-card--ts .repo-link:focus-visible::after {
+    outline-color: var(--accent);
+}
+
+.repo-code {
+    margin: 0 0 24px;
+    padding: 14px 16px;
+    background: var(--navy);
+    border: 1px solid var(--lightest-navy);
+    border-left: 3px solid var(--accent, var(--green));
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.74rem;
+    line-height: 1.65;
+    color: var(--light-slate);
+}
+
+.repo-code code {
+    font: inherit;
+    white-space: pre;
+}
+
+.repo-code .c {
+    color: var(--slate);
+    font-style: italic;
+}
+
+.repo-code .k {
+    color: var(--accent, var(--green));
+}
+
+.repo-code .s {
+    color: #c3e88d;
+}
+
+/* anchors from the portfolio's "Info" links land below the fixed header */
+.repo-card[id] {
+    scroll-margin-top: 110px;
+}

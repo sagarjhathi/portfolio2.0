@@ -44,7 +44,7 @@
                 <div class="repo-grid">
 
                     <!-- Repo 1: Java -->
-                    <article class="repo-card">
+                    <article class="repo-card repo-card--java" id="java">
                         <div class="repo-card-head">
                             <span class="repo-mono">JAVA</span>
                             <div>
@@ -84,8 +84,7 @@
                     </article>
 
                     <!-- Repo 2: Playwright -->
-                    <!-- TODO: confirm every fact on this card matches the real repo, and replace REPLACE-WITH-REPO-NAME in the button href -->
-                    <article class="repo-card">
+                    <article class="repo-card repo-card--ts" id="playwright">
                         <div class="repo-card-head">
                             <span class="repo-mono">TS</span>
                             <div>
@@ -102,21 +101,27 @@
                         </dl>
 
                         <ul class="repo-points">
-                            <li>Same filter-validation scenarios, rebuilt from scratch</li>
-                            <li>Auto-waiting and built-in parallel execution</li>
-                            <li>Trace and report artifacts produced on every CI run</li>
+                            <li>Same filter validation, rebuilt with page objects and reusable multi-step flows</li>
+                            <li>CI runs 4 parallel shards with retries, then merges them into one HTML report</li>
+                            <li>Typecheck job, weekly scheduled run, and video and screenshot on failures</li>
                         </ul>
+
+                        <pre class="repo-code" aria-label="Illustrative code sample"><code><span class="c">// illustrative sample</span>
+<span class="k">test</span>(<span class="s">'brand filter matches results'</span>, <span class="k">async</span> ({ page }) =&gt; {
+  <span class="k">await</span> listing.applyFilter(<span class="s">'Brand'</span>, <span class="s">'Samsung'</span>);
+  <span class="k">await</span> expect(listing.titles).toContainText(<span class="s">/Samsung/i</span>);
+});</code></pre>
 
                         <ul class="repo-tech">
                             <li>Playwright</li>
                             <li>TypeScript</li>
                             <li>Node.js</li>
-                            <li>Page Object Model</li>
+                            <li>Allure</li>
                         </ul>
 
                         <div class="repo-actions">
                             <a class="repo-btn primary repo-link" target="_blank" rel="noopener noreferrer"
-                                href="https://github.com/sagarjhathi/REPLACE-WITH-REPO-NAME">
+                                href="https://github.com/sagarjhathi/amazon-e2e-filter-automation-play">
                                 View Repository <span aria-hidden="true">&rarr;</span>
                             </a>
                         </div>
@@ -140,9 +145,8 @@
                             <tr><th scope="row">Browser control</th><td>Selenium WebDriver + WebDriverManager</td><td>Playwright (built in)</td></tr>
                             <tr><th scope="row">Test runner</th><td>TestNG</td><td>Playwright Test</td></tr>
                             <tr><th scope="row">Reporting</th><td>Extent Spark HTML</td><td>Playwright HTML Reporter</td></tr>
-                            <!-- TODO: fill in the Playwright test-data approach -->
-                            <tr><th scope="row">Test data</th><td>Excel via Apache POI</td><td>TODO</td></tr>
-                            <tr><th scope="row">CI/CD</th><td>GitHub Actions + GitHub Pages</td><td>GitHub Actions</td></tr>
+                            <tr><th scope="row">Test data</th><td>Excel via Apache POI</td><td>Live site data, sampled per run via env-configured counts</td></tr>
+                            <tr><th scope="row">CI/CD</th><td>GitHub Actions + GitHub Pages</td><td>GitHub Actions (sharded, scheduled)</td></tr>
                         </tbody>
                     </table>
                 </div>

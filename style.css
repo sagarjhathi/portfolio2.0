@@ -1103,3 +1103,38 @@ p {
     margin-bottom: 16px;
 }
 }
+
+/* Playwright card: facts panel in place of a video */
+.facts-panel {
+    margin: 0;
+    padding: 8px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    aspect-ratio: 16 / 9;
+    font-family: var(--font-mono);
+}
+
+.facts-panel div {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 9px 0;
+    border-bottom: 1px dashed var(--lightest-navy);
+}
+
+.facts-panel div:last-child {
+    border-bottom: 0;
+}
+
+.facts-panel dt {
+    color: var(--slate);
+    font-size: 12px;
+}
+
+.facts-panel dd {
+    margin: 0;
+    color: var(--green);
+    font-size: 12px;
+    text-align: right;
+}
