@@ -71,29 +71,7 @@ function updateScrollProgress() {
     scrollProgress.style.width = `${progress}%`;
 }
 
-// --- 2. Mobile Menu Toggle ---
-hamburger.addEventListener('click', toggleMenu);
-hamburger.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        toggleMenu();
-    }
-});
-
-function toggleMenu() {
-    const isActive = navLinks.parentElement.classList.toggle('nav-active');
-    hamburger.classList.toggle('toggle');
-    hamburger.setAttribute('aria-expanded', isActive);
-    document.body.classList.toggle('no-scroll');
-}
-
-navItems.forEach(link => {
-    link.addEventListener('click', () => {
-        if (navLinks.parentElement.classList.contains('nav-active')) {
-            toggleMenu();
-        }
-    });
-});
+// --- 2. Mobile Menu Toggle: handled in nav-menu.js ---
 
 // --- 3. Intersection Observer for Animations ---
 const observerOptions = {
@@ -142,8 +120,10 @@ function updateActiveLink() {
     });
     navItems.forEach(link => {
         link.classList.remove('active');
+        link.removeAttribute('aria-current');
         if (link.getAttribute('href') === `#${currentSection}`) {
             link.classList.add('active');
+            link.setAttribute('aria-current', 'true');
         }
     });
 }
