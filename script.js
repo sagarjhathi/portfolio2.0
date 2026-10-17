@@ -147,3 +147,13 @@ function updateActiveLink() {
         }
     });
 }
+
+// --- 6. Experience: collapse button at the end of an expanded list ---
+document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.job-less');
+    if (!btn) return;
+    const details = btn.closest('details');
+    if (!details) return;
+    details.open = false;
+    details.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
