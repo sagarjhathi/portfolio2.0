@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="YouTube multi-language UI validation rebuilt with Playwright and TypeScript. JSON-driven data, eld language detection, a SafeActions helper, nightly 4-shard CI and Allure reports on GitHub Pages.">
+    <title>YouTube Language Validator: Playwright + TypeScript | Sagar Hathi</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a192f'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%2364ffda' text-anchor='middle'%3ESH%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&family=Inter:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="project-page.css">
+    <link rel="stylesheet" href="project-page-v2.css">
+</head>
+
+<body class="project-page accent-ts">
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">&lt;Sagar Hathi/&gt;</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#projects" class="resume-btn">&larr; Back to Portfolio</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section pp-hero">
+            <div class="container">
+                <div class="pp-hero-grid">
+                    <div>
+                        <a class="pp-crumb" href="index.html#projects">&larr; All projects</a>
+                        <p class="pp-eyebrow">Personal Project &middot; Implementation 02</p>
+                        <h1 class="pp-title">YouTube Language Validator<br>Playwright + TypeScript</h1>
+                        <p class="pp-lead">
+                            The YouTube multi-language checks from my Java project, ported to Playwright and
+                            TypeScript. It switches YouTube&rsquo;s language and region again and again, then checks
+                            that the interface really shows the expected language.
+                        </p>
+                        <div class="pp-buttons">
+                            <a class="pp-btn primary" href="https://github.com/sagarjhathi/youtube-multilang-ui-automation-playwright-ts"
+                                target="_blank" rel="noopener noreferrer">View Repository <span aria-hidden="true">&rarr;</span></a>
+                            <a class="pp-btn" href="https://sagarjhathi.github.io/youtube-multilang-ui-automation-playwright-ts/"
+                                target="_blank" rel="noopener noreferrer">Live Reports</a>
+                            <a class="pp-btn" href="project-youtube-validator.html">See the Java version</a>
+                        </div>
+                        <ul class="pp-badges" aria-label="Main technologies">
+                            <li>TypeScript</li>
+                            <li>Playwright</li>
+                            <li>eld</li>
+                            <li>Node.js 24</li>
+                            <li>GitHub Actions</li>
+                            <li>Allure</li>
+                        </ul>
+                    </div>
+                    <div class="pp-hero-visual">
+                        <div class="browser-frame">
+                            <div class="browser-header">
+                                <div class="dot red"></div>
+                                <div class="dot yellow"></div>
+                                <div class="dot green"></div>
+                            </div>
+                            <a href="https://sagarjhathi.github.io/youtube-multilang-ui-automation-playwright-ts/" target="_blank"
+                                rel="noopener noreferrer" aria-label="Open the live reports">
+                                <img class="project-thumb" src="assets/thumb-youtube-playwright.svg"
+                                    alt="YouTube language validator with Playwright and TypeScript">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <dl class="pp-stats">
+                    <div><dt>Checks</dt><dd>8 tests</dd></div>
+                    <div><dt>Language</dt><dd>TypeScript</dd></div>
+                    <div><dt>Detection</dt><dd>eld</dd></div>
+                    <div><dt>CI/CD</dt><dd>GitHub Actions</dd></div>
+                </dl>
+            </div>
+        </section>
+
+        <nav class="pp-toc" aria-label="On this page">
+            <div class="container">
+                <a href="#overview">Overview</a>
+                <a href="#features">What&rsquo;s special</a>
+                <a href="#architecture">Architecture</a>
+                <a href="#pipeline">CI pipeline</a>
+                <a href="#stack">Tech &amp; tools</a>
+                <a href="#compare">Java vs Playwright</a>
+                <a href="#run">Run &amp; reports</a>
+            </div>
+        </nav>
+
+        <section class="pp-section" id="overview">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">01.</span> Overview</h2>
+                <p class="pp-text">
+                    The tests run against the live youtube.com, signed out, in a real browser. Nothing is mocked. For
+                    each language row they select the language, wait for the reload, read the UI element under test,
+                    and compare it with expected data or detect its language. The 8 checks cover:
+                </p>
+                <ul class="pp-list">
+                    <li>The side menu, both expanded and collapsed</li>
+                    <li>The settings menu</li>
+                    <li>The country code on the YouTube logo for each region</li>
+                    <li>The search-filter popup</li>
+                </ul>
+                <div class="pp-metrics reveal">
+                    <div class="pp-metric"><strong>8</strong><span>checks across the menus, settings, logo and filter popup</span></div>
+                    <div class="pp-metric"><strong>4</strong><span>parallel CI shards with merged reports</span></div>
+                    <div class="pp-metric"><strong>2</strong><span>verification styles: exact text and language detection</span></div>
+                    <div class="pp-metric"><strong>3</strong><span>published outputs: landing page, Playwright report and Allure</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pp-section" id="features">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">02.</span> What makes it special</h2>
+                <div class="pp-cards">
+                    <article class="pp-card reveal">
+                        <span class="tag">Intelligence</span>
+                        <h3>Two ways to verify</h3>
+                        <p>Exact text matching against expected data, plus language detection with the
+                            <code>eld</code> library. Tests whose names end in &ldquo;Lingua&rdquo; use detection.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">Assertions</span>
+                        <h3>All wrong languages in one run</h3>
+                        <p>Soft assertions report a wrong language at the end of the run and let the loop keep going
+                            through the remaining languages.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">Reliability</span>
+                        <h3>SafeActions helper</h3>
+                        <p>Waits until an element is visible and enabled, retries up to three times, refreshes the
+                            page between later attempts, and falls back to a DOM click before it fails with a clear
+                            error.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">Data</span>
+                        <h3>JSON-driven expectations</h3>
+                        <p>Expected values live in one JSON file per check, and run size is set in
+                            <code>runconfig.json</code>. Environment variables override the file.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">CI</span>
+                        <h3>Sharded nightly runs</h3>
+                        <p>CI splits the tests into 4 shards, merges the blob reports into one HTML report, and
+                            combines the Allure results. A nightly run sets <code>IS_CRON</code> to switch to the
+                            wider config.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">Reporting</span>
+                        <h3>Reports on GitHub Pages</h3>
+                        <p>Each run publishes a landing page with the run number and commit, the merged Playwright
+                            report, and an Allure report that keeps its history for trend graphs.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">Navigation</span>
+                        <h3>Handles the page reload</h3>
+                        <p>Language clicks use a DOM click so Playwright does not wait on the navigation the click
+                            itself starts, which keeps language loops from stalling.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">Honesty</span>
+                        <h3>Knows detection&rsquo;s limits</h3>
+                        <p>The spec skips full detection for the few languages <code>eld</code> cannot handle and
+                            checks the <code>&lt;html lang&gt;</code> value instead.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="pp-section" id="architecture">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">03.</span> Architecture</h2>
+                <p class="pp-text">Each layer builds on the one below it.</p>
+                <ol class="pp-layers">
+                    <li><strong>tests</strong><span>YtMasterSafeActions.spec.ts is the maintained suite. YtMaster.spec.ts is the original, plain Playwright version.</span></li>
+                    <li><strong>pages</strong><span>YtLandingPage holds the locators and page methods.</span></li>
+                    <li><strong>utils</strong><span>SafeActions, GenericUtility (html lang checks, screenshots, iteration counts) and ReadJSON.</span></li>
+                    <li><strong>detection</strong><span>languageDetector built on <code>eld</code>, used by the &ldquo;Lingua&rdquo; tests.</span></li>
+                    <li><strong>configs &amp; data</strong><span>runconfig.json plus one JSON file of expected results per check.</span></li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="pp-section" id="pipeline">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">04.</span> CI pipeline</h2>
+                <p class="pp-text">Keys in the run config that end in <code>CI</code> apply to scheduled runs, so the same code covers a quick push and a thorough night.</p>
+                <ol class="pp-pipeline reveal">
+                    <li>
+                        <h3>1 &middot; Trigger</h3>
+                        <p>Push or pull request to main or master, a manual run, or nightly at 20:00 UTC (01:30 IST).</p>
+                    </li>
+                    <li>
+                        <h3>2 &middot; Configure</h3>
+                        <p>The nightly run sets <code>IS_CRON=true</code> so the tests read the scheduled config.</p>
+                    </li>
+                    <li>
+                        <h3>3 &middot; Test</h3>
+                        <p>4 shards, each uploading a blob report and Allure results. One retry on CI.</p>
+                        <div class="fan"><span>shard 1/4</span><span>shard 2/4</span><span>shard 3/4</span><span>shard 4/4</span></div>
+                    </li>
+                    <li>
+                        <h3>4 &middot; Merge</h3>
+                        <p>One Playwright HTML report, and one Allure report built from every shard.</p>
+                    </li>
+                    <li>
+                        <h3>5 &middot; Publish</h3>
+                        <p>Pushes, manual and nightly runs deploy to GitHub Pages. Pull requests only build.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="pp-section" id="stack">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">05.</span> Tech &amp; tools, by importance</h2>
+                <p class="pp-text">Listed from the tools the project cannot work without to the ones that make it pleasant to run and share.</p>
+
+                <div class="pp-tier reveal">
+                    <div class="pp-tier-label"><b>Tier 1</b> Core</div>
+                    <div class="pp-tools">
+                        <div class="pp-tool"><h3>TypeScript</h3><span class="role">Language</span><p>Typed page objects, config and data readers keep a long data-driven loop easy to maintain.</p></div>
+                        <div class="pp-tool"><h3>Playwright Test</h3><span class="role">Runner + browser automation</span><p>Drives Chromium at 1920&times;1080 with 2 workers, a 30-second action timeout and trace kept on failure.</p></div>
+                        <div class="pp-tool"><h3>Node.js 24</h3><span class="role">Runtime</span><p>Runs the tests, the language-detection module and the report scripts.</p></div>
+                    </div>
+                </div>
+
+                <div class="pp-tier reveal">
+                    <div class="pp-tier-label"><b>Tier 2</b> What makes it smart</div>
+                    <div class="pp-tools">
+                        <div class="pp-tool"><h3>eld</h3><span class="role">Language detection</span><p>Detects the language of the UI text that was actually rendered, instead of trusting the setting that was clicked.</p></div>
+                        <div class="pp-tool"><h3>SafeActions</h3><span class="role">Resilience helper</span><p>Visible-and-enabled waits, three attempts, page refreshes and a DOM-click fallback for flaky interactions.</p></div>
+                        <div class="pp-tool"><h3>JSON data + RunConfig</h3><span class="role">Data and configuration</span><p>Expected results per check, run-size switches, and environment variable overrides.</p></div>
+                    </div>
+                </div>
+
+                <div class="pp-tier reveal">
+                    <div class="pp-tier-label"><b>Tier 3</b> Reporting</div>
+                    <div class="pp-tools">
+                        <div class="pp-tool"><h3>Playwright HTML report</h3><span class="role">Debugging</span><p>Merged from all four shards into one report you can open with <code>show-report</code>.</p></div>
+                        <div class="pp-tool"><h3>Allure</h3><span class="role">Trends</span><p>Results from every shard combined, with the previous history copied in so trend graphs continue.</p></div>
+                        <div class="pp-tool"><h3>Soft assertions</h3><span class="role">Result quality</span><p>A wrong language is recorded and the loop continues, so one run lists every problem.</p></div>
+                    </div>
+                </div>
+
+                <div class="pp-tier reveal">
+                    <div class="pp-tier-label"><b>Tier 4</b> Delivery</div>
+                    <div class="pp-tools">
+                        <div class="pp-tool"><h3>GitHub Actions</h3><span class="role">CI/CD</span><p>Four-shard matrix, a nightly cron and a merge job that needs write permission to publish.</p></div>
+                        <div class="pp-tool"><h3>GitHub Pages</h3><span class="role">Hosting</span><p>A <code>gh-pages</code> branch with the landing page, Allure and Playwright reports, replaced by a single commit each time.</p></div>
+                        <div class="pp-tool"><h3>Environment overrides</h3><span class="role">Run control</span><p><code>IS_CRON</code> and other variables switch the config without editing a file.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="pp-section" id="compare">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">06.</span> Same problem, two stacks</h2>
+                <p class="pp-text">Compared with the <a href="project-youtube-validator.html" style="color:var(--accent)">Java and Selenium version</a>, which has the same checks.</p>
+                <table class="pp-compare reveal">
+                    <thead><tr><th></th><th>Java + Selenium</th><th>Playwright + TypeScript (this page)</th></tr></thead>
+                    <tbody>
+                        <tr><th>Runner</th><td>TestNG 7.10</td><td class="here">Playwright Test</td></tr>
+                        <tr><th>Language detection</th><td>Lingua</td><td class="here">eld</td></tr>
+                        <tr><th>Expected data</th><td>Excel matrices</td><td class="here">JSON files</td></tr>
+                        <tr><th>CI shards</th><td>2: lingua and non-lingua</td><td class="here">4, split by test count</td></tr>
+                        <tr><th>Reports</th><td>Extent per shard + merged Allure</td><td class="here">Merged HTML + Allure</td></tr>
+                        <tr><th>Browsers</th><td>Chrome, Firefox, Edge</td><td class="here">Chromium</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="pp-section" id="run">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">07.</span> Run it &amp; see the reports</h2>
+                <div class="pp-links">
+                    <a class="pp-link" href="https://sagarjhathi.github.io/youtube-multilang-ui-automation-playwright-ts/" target="_blank" rel="noopener noreferrer"><b>Live reports</b><span>The landing page with the Playwright and Allure reports.</span><em>Open reports &rarr;</em></a>
+                    <a class="pp-link" href="https://github.com/sagarjhathi/youtube-multilang-ui-automation-playwright-ts" target="_blank" rel="noopener noreferrer"><b>Source code</b><span>The tests, helpers, data and workflow on GitHub.</span><em>View repository &rarr;</em></a>
+                    <a class="pp-link" href="project-youtube-validator.html"><b>Java version</b><span>The same checks built with Java, Selenium and TestNG.</span><em>Compare &rarr;</em></a>
+                </div>
+                <pre class="pp-code">npm ci
+npx playwright install chromium
+
+npx playwright test              <span class="c"># all tests</span>
+npx playwright show-report       <span class="c"># open the last report</span></pre>
+                <p class="pp-note">
+                    Known limits: YouTube changes menus without notice, and the expected text was captured from India,
+                    so US-based CI runners can show different wording or country codes. Language switches reload the
+                    full page and can occasionally run slowly. For learning and QA research only, not affiliated with
+                    YouTube or Google.
+                </p>
+
+                <nav class="pp-nav" aria-label="Project navigation">
+                    <a href="project-youtube-validator.html">&larr; Previous: Java + Selenium</a>
+                    <a href="index.html#projects">All projects &rarr;</a>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="copyright">Designed &amp; Built by Sagar</p>
+        </div>
+    </footer>
+    <script src="project-page.js"></script>
+</body>
+
+</html>

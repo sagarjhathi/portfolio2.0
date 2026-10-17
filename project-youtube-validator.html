@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="YouTube multi-language UI validator built with Java, Selenium 4 and Lingua language detection. Checks 40+ locales for correct language, html lang and region behavior.">
-    <title>YouTube Language Validator | Sagar Hathi</title>
+    <meta name="description" content="YouTube multi-language UI validator built with Java 21, Selenium 4 and TestNG. Uses Lingua language detection, Excel-driven expectations and a 2-shard CI pipeline with reports on GitHub Pages.">
+    <title>YouTube Language Validator: Java + Selenium | Sagar Hathi</title>
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a192f'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%2364ffda' text-anchor='middle'%3ESH%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,9 +15,10 @@
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="project-page.css">
+    <link rel="stylesheet" href="project-page-v2.css">
 </head>
 
-<body class="project-page">
+<body class="project-page accent-java">
     <header class="header">
         <nav class="navbar">
             <div class="logo">
@@ -32,21 +33,47 @@
     <main>
         <section class="section pp-hero">
             <div class="container">
-                <a class="pp-crumb" href="index.html#projects">&larr; All projects</a>
-                <p class="pp-eyebrow">Personal Project</p>
-                <h1 class="pp-title">YouTube Multi-Language<br>UI Validator</h1>
-                <p class="pp-lead">
-                    A framework that checks whether YouTube really shows the right language and region settings
-                    across 40+ locales. It does not just compare text. It detects the language of what is on
-                    screen, and checks that the page&rsquo;s language tag agrees.
-                </p>
-
-                <div class="pp-buttons">
-                    <a class="pp-btn primary"
-                        href="https://github.com/sagarjhathi/youtube-multi-lang-ui-validator-automation"
-                        target="_blank" rel="noopener noreferrer">View Repository <span aria-hidden="true">&rarr;</span></a>
-                    <a class="pp-btn" href="https://www.youtube.com/watch?v=MGFTmvkpb5U" target="_blank"
-                        rel="noopener noreferrer">Demo Video</a>
+                <div class="pp-hero-grid">
+                    <div>
+                        <a class="pp-crumb" href="index.html#projects">&larr; All projects</a>
+                        <p class="pp-eyebrow">Personal Project &middot; Implementation 01</p>
+                        <h1 class="pp-title">YouTube Language Validator<br>Java + Selenium</h1>
+                        <p class="pp-lead">
+                            A framework that checks whether YouTube really shows the right language and region
+                            settings across 40+ locales. It does not just compare text. It detects the language of what
+                            is on screen, and checks that the page&rsquo;s language tag agrees.
+                        </p>
+                        <div class="pp-buttons">
+                            <a class="pp-btn primary" href="https://github.com/sagarjhathi/youtube-multilang-ui-automation-selenium-java"
+                                target="_blank" rel="noopener noreferrer">View Repository <span aria-hidden="true">&rarr;</span></a>
+                            <a class="pp-btn" href="https://sagarjhathi.github.io/youtube-multilang-ui-automation-selenium-java/"
+                                target="_blank" rel="noopener noreferrer">Live Reports</a>
+                            <a class="pp-btn" href="https://www.youtube.com/watch?v=MGFTmvkpb5U" target="_blank"
+                                rel="noopener noreferrer">Demo Video</a>
+                        </div>
+                        <ul class="pp-badges" aria-label="Main technologies">
+                            <li>Java 21</li>
+                            <li>Selenium 4</li>
+                            <li>TestNG</li>
+                            <li>Lingua</li>
+                            <li>Apache POI</li>
+                            <li>GitHub Actions</li>
+                        </ul>
+                    </div>
+                    <div class="pp-hero-visual">
+                        <div class="browser-frame">
+                            <div class="browser-header">
+                                <div class="dot red"></div>
+                                <div class="dot yellow"></div>
+                                <div class="dot green"></div>
+                            </div>
+                            <a href="https://sagarjhathi.github.io/youtube-multilang-ui-automation-selenium-java/" target="_blank"
+                                rel="noopener noreferrer" aria-label="Open the live report hub">
+                                <img class="project-thumb" src="assets/thumb-youtube-java.svg"
+                                    alt="YouTube language validator with Java and Selenium">
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <dl class="pp-stats">
@@ -58,63 +85,99 @@
             </div>
         </section>
 
-        <section class="pp-section">
+        <nav class="pp-toc" aria-label="On this page">
             <div class="container">
-                <h2 class="pp-h2"><span class="num">01.</span> What it validates</h2>
+                <a href="#overview">Overview</a>
+                <a href="#features">What&rsquo;s special</a>
+                <a href="#architecture">Architecture</a>
+                <a href="#pipeline">CI pipeline</a>
+                <a href="#stack">Tech &amp; tools</a>
+                <a href="#compare">Java vs Playwright</a>
+                <a href="#run">Run &amp; demo</a>
+            </div>
+        </nav>
+
+        <section class="pp-section" id="overview">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">01.</span> Overview</h2>
                 <p class="pp-text">
-                    For each language and region, the framework applies the setting in a real browser, reads the
-                    text that YouTube renders, and verifies:
+                    For each language and region, the framework applies the setting in a real browser, reads the text
+                    that YouTube renders, and verifies:
                 </p>
                 <ul class="pp-list">
-                    <li>The side menu language, both expanded and collapsed</li>
+                    <li>The side menu language, both expanded and collapsed, against the settings</li>
                     <li>The settings menu localization</li>
-                    <li>Filter labels on search results</li>
+                    <li>Filter labels on the search results page</li>
                     <li>The <code>&lt;html lang&gt;</code> attribute</li>
                     <li>The country code shown on the YouTube logo for each region</li>
                     <li>UI stability across screen sizes and layouts</li>
                 </ul>
+                <div class="pp-metrics reveal">
+                    <div class="pp-metric"><strong>40+</strong><span>languages and regions validated</span></div>
+                    <div class="pp-metric"><strong>8</strong><span>tests: 3 with language detection, 5 without</span></div>
+                    <div class="pp-metric"><strong>3</strong><span>signals cross-checked: text, detected language, html lang</span></div>
+                    <div class="pp-metric"><strong>2</strong><span>parallel CI shards, then one publish job</span></div>
+                </div>
             </div>
         </section>
 
-        <section class="pp-section">
+        <section class="pp-section" id="features">
             <div class="container">
-                <h2 class="pp-h2"><span class="num">02.</span> What makes it different</h2>
+                <h2 class="pp-h2"><span class="num">02.</span> What makes it special</h2>
                 <div class="pp-cards">
-                    <article class="pp-card">
+                    <article class="pp-card reveal">
+                        <span class="tag">Intelligence</span>
                         <h3>Detects the real language</h3>
                         <p>The Lingua library identifies the language of the text on screen. This catches mixed
                             languages and half-translated pages that a plain string match would miss.</p>
                     </article>
-                    <article class="pp-card">
+                    <article class="pp-card reveal">
+                        <span class="tag">Validation</span>
                         <h3>Cross-checks three sources</h3>
-                        <p>The visible text, the detected language and the page&rsquo;s <code>html lang</code>
-                            tag must all agree, so one wrong signal cannot hide a localization bug.</p>
+                        <p>The visible text, the detected language and the page&rsquo;s <code>html lang</code> tag
+                            must all agree, so one wrong signal cannot hide a localization bug.</p>
                     </article>
-                    <article class="pp-card">
+                    <article class="pp-card reveal">
+                        <span class="tag">Data</span>
                         <h3>Expectation matrices in Excel</h3>
                         <p>Expected values per language and per country-to-locale change live in Excel files. New
                             languages are added by editing data, not code.</p>
                     </article>
-                    <article class="pp-card">
+                    <article class="pp-card reveal">
+                        <span class="tag">CI</span>
                         <h3>Coverage that follows the trigger</h3>
-                        <p>Pushes and pull requests run a reduced set of languages for fast feedback. The nightly
-                            run covers every language and region.</p>
+                        <p>Pushes and pull requests run a reduced set of languages for fast feedback. The nightly run
+                            covers every language and region.</p>
                     </article>
-                    <article class="pp-card">
+                    <article class="pp-card reveal">
+                        <span class="tag">Reliability</span>
                         <h3>Built for a dynamic app</h3>
                         <p>YouTube is a single-page app that changes constantly. SafeActions adds retries, a
                             JavaScript click fallback and page-refresh recovery to keep runs stable.</p>
                     </article>
-                    <article class="pp-card">
+                    <article class="pp-card reveal">
+                        <span class="tag">Structure</span>
+                        <h3>Split by intent</h3>
+                        <p>Tests are tagged into <code>lingua</code> and <code>non-lingua</code> groups that run as
+                            separate parallel shards, so detection-heavy tests do not slow the rest.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">Locale</span>
+                        <h3>Region and country checks</h3>
+                        <p>A dedicated test maps each region to the country code shown on the YouTube logo, so
+                            location settings are verified as well as language.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">Evidence</span>
                         <h3>Easy to debug</h3>
                         <p>Each run has its own folder, each test its own log, and screenshots are embedded in the
-                            HTML report, which is published to GitHub Pages.</p>
+                            Extent report published to GitHub Pages.</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section class="pp-section">
+        <section class="pp-section" id="architecture">
             <div class="container">
                 <h2 class="pp-h2"><span class="num">03.</span> Architecture</h2>
                 <p class="pp-text">Each layer builds on the one below it.</p>
@@ -125,82 +188,129 @@
                     <li><strong>SafeActions</strong><span>The resilience layer: retries, waits, JavaScript click fallback and refresh recovery.</span></li>
                     <li><strong>Driver &amp; utilities</strong><span>DriverManager, ConfigManager, WaitUtility, GenericUtility and ScreenshotUtil.</span></li>
                     <li><strong>Lingua</strong><span>Language detection on the extracted UI text.</span></li>
-                    <li><strong>Logging &amp; reporting</strong><span>Log4j2 routing logs and Extent Spark reports.</span></li>
+                    <li><strong>Logging &amp; reporting</strong><span>Log4j2 routing logs, Extent Spark reports and Allure results.</span></li>
                 </ol>
             </div>
         </section>
 
-        <section class="pp-section">
+        <section class="pp-section" id="pipeline">
             <div class="container">
-                <h2 class="pp-h2"><span class="num">04.</span> How a run works</h2>
-                <ol class="pp-steps">
-                    <li>Trigger: push, pull request, nightly CRON or manual run</li>
-                    <li>Load configuration and choose how many languages to cover</li>
-                    <li>Start the browser and open YouTube</li>
-                    <li>For each language or region, apply the setting through the UI</li>
-                    <li>Extract the UI text and the <code>html lang</code> attribute</li>
-                    <li>Detect the language and compare with the Excel expectations</li>
-                    <li>Save screenshots and logs, then generate the report</li>
-                    <li>Publish to GitHub Pages and send a Discord notification</li>
+                <h2 class="pp-h2"><span class="num">04.</span> CI pipeline</h2>
+                <p class="pp-text">One workflow runs the two test groups in parallel and publishes a single report hub.</p>
+                <ol class="pp-pipeline reveal">
+                    <li>
+                        <h3>1 &middot; Trigger</h3>
+                        <p>Push, pull request, manual run or nightly CRON.</p>
+                    </li>
+                    <li>
+                        <h3>2 &middot; Choose coverage</h3>
+                        <p>Reduced languages for pushes and pull requests. Every language and region at night.</p>
+                    </li>
+                    <li>
+                        <h3>3 &middot; Parallel shards</h3>
+                        <p>Each shard runs a tagged group and stores its Extent run folder and Allure results.</p>
+                        <div class="fan"><span>lingua</span><span>non-lingua</span></div>
+                    </li>
+                    <li>
+                        <h3>4 &middot; Publish</h3>
+                        <p>Merges Allure into one dashboard and deploys the hub with both Extent reports.</p>
+                    </li>
+                    <li>
+                        <h3>5 &middot; Notify</h3>
+                        <p>Discord messages at start and finish, with report links.</p>
+                    </li>
                 </ol>
             </div>
         </section>
 
-        <section class="pp-section">
+        <section class="pp-section" id="stack">
             <div class="container">
-                <h2 class="pp-h2"><span class="num">05.</span> Tech stack</h2>
-                <dl class="pp-tech">
-                    <div><dt>Language &amp; build</dt><dd>Java 21, Maven</dd></div>
-                    <div><dt>Browser automation</dt><dd>Selenium 4.27, WebDriverManager, Chrome / Firefox / Edge with configurable headless, GPU and sandbox</dd></div>
-                    <div><dt>Test engine</dt><dd>TestNG 7.10: parallel execution, retry analyzers, custom listeners, suite runs</dd></div>
-                    <div><dt>Data &amp; config</dt><dd>Apache POI (Excel), masterdata.properties, environment variable overrides</dd></div>
-                    <div><dt>Language intelligence</dt><dd>Lingua language detector</dd></div>
-                    <div><dt>Logging &amp; reporting</dt><dd>Log4j2 routing appender, ExtentReports (Spark HTML)</dd></div>
-                    <div><dt>CI/CD &amp; alerts</dt><dd>GitHub Actions (push, PR, manual, nightly CRON), artifact storage, GitHub Pages</dd></div>
-                    <div><dt>Notifications</dt><dd>Discord webhooks for run start and finish, with links to the report</dd></div>
-                </dl>
+                <h2 class="pp-h2"><span class="num">05.</span> Tech &amp; tools, by importance</h2>
+                <p class="pp-text">Listed from the tools the project cannot work without to the ones that make it pleasant to run and share.</p>
+
+                <div class="pp-tier reveal">
+                    <div class="pp-tier-label"><b>Tier 1</b> Core</div>
+                    <div class="pp-tools">
+                        <div class="pp-tool"><h3>Java 21</h3><span class="role">Language</span><p>Typed, mature and well supported by every library in the stack.</p></div>
+                        <div class="pp-tool"><h3>Selenium 4.27</h3><span class="role">Browser automation</span><p>Drives Chrome, Firefox and Edge, with configurable headless, GPU and sandbox options.</p></div>
+                        <div class="pp-tool"><h3>TestNG 7.10</h3><span class="role">Test engine</span><p>Parallel execution, groups, retry analyzers, custom listeners and suite files.</p></div>
+                    </div>
+                </div>
+
+                <div class="pp-tier reveal">
+                    <div class="pp-tier-label"><b>Tier 2</b> What makes it smart</div>
+                    <div class="pp-tools">
+                        <div class="pp-tool"><h3>Lingua</h3><span class="role">Language detection</span><p>Detects the language actually rendered in the UI text and compares it with the expected mapping.</p></div>
+                        <div class="pp-tool"><h3>SafeActions</h3><span class="role">Resilience layer</span><p>Retries, centralized waits, a JavaScript click fallback and page-refresh recovery for a constantly changing app.</p></div>
+                        <div class="pp-tool"><h3>Apache POI + properties</h3><span class="role">Data and configuration</span><p>Excel expectation matrices, <code>masterdata.properties</code> and environment variable overrides.</p></div>
+                    </div>
+                </div>
+
+                <div class="pp-tier reveal">
+                    <div class="pp-tier-label"><b>Tier 3</b> Reporting &amp; observability</div>
+                    <div class="pp-tools">
+                        <div class="pp-tool"><h3>ExtentReports (Spark)</h3><span class="role">HTML report</span><p>Self-contained report per shard with embedded screenshots, linked logs and failure stack traces.</p></div>
+                        <div class="pp-tool"><h3>Allure</h3><span class="role">Merged dashboard</span><p>Raw results from each shard combined into one dashboard in CI.</p></div>
+                        <div class="pp-tool"><h3>Log4j2</h3><span class="role">Logging</span><p>A routing appender gives every test its own log file inside the run folder.</p></div>
+                    </div>
+                </div>
+
+                <div class="pp-tier reveal">
+                    <div class="pp-tier-label"><b>Tier 4</b> Build &amp; delivery</div>
+                    <div class="pp-tools">
+                        <div class="pp-tool"><h3>Maven + WebDriverManager</h3><span class="role">Build and drivers</span><p>One command runs the suite and the right browser driver is resolved automatically.</p></div>
+                        <div class="pp-tool"><h3>GitHub Actions</h3><span class="role">CI/CD</span><p>Push, pull request, manual and nightly CRON triggers, with parallel shards and a publish job.</p></div>
+                        <div class="pp-tool"><h3>GitHub Pages + Discord</h3><span class="role">Sharing results</span><p>Reports are hosted publicly and webhooks post run start and finish with links.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="pp-section" id="compare">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">06.</span> Same problem, two stacks</h2>
+                <p class="pp-text">I ported this project to <a href="project-youtube-playwright.html" style="color:var(--accent)">Playwright and TypeScript</a> and kept the same checks, so the stacks can be compared directly.</p>
+                <table class="pp-compare reveal">
+                    <thead><tr><th></th><th>Java + Selenium (this page)</th><th>Playwright + TypeScript</th></tr></thead>
+                    <tbody>
+                        <tr><th>Runner</th><td class="here">TestNG 7.10</td><td>Playwright Test</td></tr>
+                        <tr><th>Language detection</th><td class="here">Lingua</td><td>eld</td></tr>
+                        <tr><th>Expected data</th><td class="here">Excel matrices</td><td>JSON files</td></tr>
+                        <tr><th>CI shards</th><td class="here">2: lingua and non-lingua</td><td>4, split by test count</td></tr>
+                        <tr><th>Reports</th><td class="here">Extent per shard + merged Allure</td><td>Merged HTML + Allure</td></tr>
+                        <tr><th>Browsers</th><td class="here">Chrome, Firefox, Edge</td><td>Chromium</td></tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 
-        <section class="pp-section">
+        <section class="pp-section" id="run">
             <div class="container">
-                <h2 class="pp-h2"><span class="num">06.</span> Engineering decisions</h2>
-                <ul class="pp-list">
-                    <li><strong>Language detection over string matching.</strong> It validates that the text is genuinely in the expected language and prevents false passes on partial translations.</li>
-                    <li><strong>SafeActions.</strong> All browser actions go through one layer, so retries, recovery and logging behave the same everywhere.</li>
-                    <li><strong>TestNG over JUnit.</strong> Better parallelism, retries and listeners for a large multi-language suite.</li>
-                    <li><strong>Extent over Allure.</strong> Self-contained HTML that is easy to host on GitHub Pages and starts debugging from screenshots.</li>
-                    <li><strong>Trigger-aware CI.</strong> Fast feedback for developers and deep coverage overnight, with no manual toggling.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="pp-section">
-            <div class="container">
-                <h2 class="pp-h2"><span class="num">07.</span> Run it yourself</h2>
+                <h2 class="pp-h2"><span class="num">07.</span> Run it &amp; watch it</h2>
+                <div class="pp-links">
+                    <a class="pp-link" href="https://sagarjhathi.github.io/youtube-multilang-ui-automation-selenium-java/" target="_blank" rel="noopener noreferrer"><b>Live report hub</b><span>Both Extent reports and the merged Allure dashboard.</span><em>Open reports &rarr;</em></a>
+                    <a class="pp-link" href="https://github.com/sagarjhathi/youtube-multilang-ui-automation-selenium-java" target="_blank" rel="noopener noreferrer"><b>Source code</b><span>The full framework, workflow and README on GitHub.</span><em>View repository &rarr;</em></a>
+                    <a class="pp-link" href="https://www.youtube.com/watch?v=MGFTmvkpb5U" target="_blank" rel="noopener noreferrer"><b>Demo video</b><span>A recorded run of the validator.</span><em>Watch on YouTube &rarr;</em></a>
+                </div>
                 <pre class="pp-code">mvn clean test                              <span class="c"># smoke run</span>
 mvn clean test -DrunForAllLanguages=false   <span class="c"># reduced coverage</span>
-mvn clean test -DrunForAllLanguages=true    <span class="c"># full regression</span></pre>
+mvn clean test -DrunForAllLanguages=true    <span class="c"># full regression</span>
+mvn clean test -Dgroups=lingua              <span class="c"># detection tests only</span></pre>
                 <p class="pp-note">
-                    For learning and QA research only. Not affiliated with YouTube or Google. Language detection is
-                    probabilistic, so short strings and brand names can need a human review, and a CAPTCHA or UI
-                    experiment can cause failures that are not localization bugs.
+                    Known limits: YouTube changes its UI without notice, so a failure can be a layout change, an
+                    experiment or a CAPTCHA rather than a localization bug. Detection is probabilistic, and results
+                    vary by IP region, cookies and consent dialogs. For learning and QA research only, not affiliated
+                    with YouTube or Google.
                 </p>
-            </div>
-        </section>
 
-        <section class="pp-section">
-            <div class="container">
-                <h2 class="pp-h2"><span class="num">08.</span> Demo</h2>
-                <div class="pp-video">
+                <div class="pp-video" style="margin-top:28px">
                     <iframe src="https://www.youtube.com/embed/MGFTmvkpb5U" title="YouTube validator demo"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen loading="lazy"></iframe>
                 </div>
 
                 <nav class="pp-nav" aria-label="Project navigation">
-                    <a href="project-amazon-playwright.html">&larr; Previous: Playwright + TypeScript</a>
-                    <a href="index.html#projects">All projects &rarr;</a>
+                    <a href="project-amazon-playwright.html">&larr; Previous: Amazon Playwright + TypeScript</a>
+                    <a href="project-youtube-playwright.html">Next: Playwright + TypeScript &rarr;</a>
                 </nav>
             </div>
         </section>
@@ -211,6 +321,7 @@ mvn clean test -DrunForAllLanguages=true    <span class="c"># full regression</s
             <p class="copyright">Designed &amp; Built by Sagar</p>
         </div>
     </footer>
+    <script src="project-page.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,510 @@
+/* Redesigned project pages: hero, toc, metrics, pipeline, tools, challenges, compare */
+
+.pp-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 48px;
+    align-items: center;
+}
+
+.pp-hero-grid .pp-buttons {
+    margin-bottom: 24px;
+}
+
+.pp-hero-visual .browser-frame {
+    transform: rotate(0.6deg);
+    box-shadow: 0 30px 70px -20px rgba(var(--shadow-rgb), 0.9), 0 0 0 1px var(--accent-line);
+}
+
+.pp-hero-visual .browser-frame a {
+    display: block;
+    line-height: 0;
+}
+
+.pp-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.pp-badges li {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-line);
+    border-radius: 999px;
+    padding: 5px 12px;
+}
+
+.pp-hero .pp-stats {
+    margin-top: 48px;
+}
+
+/* sticky section nav */
+.pp-toc {
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    background: rgba(var(--nav-bg-rgb), 0.92);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--lightest-navy);
+    border-bottom: 1px solid var(--lightest-navy);
+    margin-top: 56px;
+}
+
+.pp-toc .container {
+    position: relative;
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    scrollbar-width: none;
+}
+
+.pp-toc .container::-webkit-scrollbar {
+    display: none;
+}
+
+.pp-toc a {
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--slate);
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.pp-toc a:hover {
+    color: var(--accent);
+}
+
+.pp-toc a.active {
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-color: var(--accent-line);
+}
+
+.pp-section[id] {
+    scroll-margin-top: 56px;
+}
+
+/* big metrics */
+.pp-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 32px 0 0;
+}
+
+.pp-metric {
+    background: linear-gradient(160deg, var(--accent-soft), var(--light-navy) 70%);
+    border: 1px solid var(--lightest-navy);
+    border-radius: 12px;
+    padding: 22px 22px 20px;
+}
+
+.pp-metric strong {
+    display: block;
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.pp-metric span {
+    color: var(--light-slate);
+    font-size: 0.88rem;
+    line-height: 1.45;
+}
+
+/* feature card tag */
+.pp-card .tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+/* CI pipeline */
+.pp-pipeline {
+    display: flex;
+    align-items: stretch;
+    list-style: none;
+    margin: 0 0 20px;
+    padding: 0;
+}
+
+.pp-pipeline>li {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    background: var(--light-navy);
+    border: 1px solid var(--lightest-navy);
+    border-top: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-right: 30px;
+}
+
+.pp-pipeline>li:last-child {
+    margin-right: 0;
+}
+
+.pp-pipeline>li:not(:last-child)::after {
+    content: "\2192";
+    position: absolute;
+    right: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+
+.pp-pipeline h3 {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 6px;
+}
+
+.pp-pipeline p {
+    margin: 0;
+    color: var(--light-slate);
+    font-size: 0.85rem;
+    line-height: 1.55;
+}
+
+.pp-pipeline .fan {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.pp-pipeline .fan span {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--lightest-slate);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-line);
+    border-radius: 4px;
+    padding: 2px 7px;
+}
+
+/* tiered tools */
+.pp-tier {
+    margin-bottom: 32px;
+}
+
+.pp-tier-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: 14px;
+}
+
+.pp-tier-label b {
+    color: var(--accent);
+    font-weight: 500;
+}
+
+.pp-tier-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--lightest-navy);
+}
+
+.pp-tools {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.pp-tool {
+    background: var(--light-navy);
+    border: 1px solid var(--lightest-navy);
+    border-radius: 10px;
+    padding: 16px 18px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.pp-tool:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.pp-tool h3 {
+    font-size: 1rem;
+    color: var(--lightest-slate);
+    margin-bottom: 2px;
+}
+
+.pp-tool .role {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.pp-tool p {
+    margin: 0;
+    color: var(--light-slate);
+    font-size: 0.88rem;
+    line-height: 1.55;
+}
+
+/* challenge -> solution */
+.pp-challenges {
+    display: grid;
+    gap: 16px;
+}
+
+.pp-challenge {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--light-navy);
+    border: 1px solid var(--lightest-navy);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.pp-challenge>div {
+    padding: 20px 24px;
+}
+
+.pp-challenge>div+div {
+    border-left: 1px solid var(--lightest-navy);
+    background: linear-gradient(120deg, var(--accent-soft), transparent 70%);
+}
+
+.pp-challenge small {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: 8px;
+}
+
+.pp-challenge>div+div small {
+    color: var(--accent);
+}
+
+.pp-challenge p {
+    margin: 0;
+    color: var(--light-slate);
+    font-size: 0.93rem;
+    line-height: 1.65;
+}
+
+.pp-challenge strong {
+    color: var(--lightest-slate);
+}
+
+/* compare table */
+.pp-compare {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--light-navy);
+    border: 1px solid var(--lightest-navy);
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 0.9rem;
+}
+
+.pp-compare th,
+.pp-compare td {
+    text-align: left;
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--lightest-navy);
+    color: var(--light-slate);
+    line-height: 1.5;
+    vertical-align: top;
+}
+
+.pp-compare tr:last-child th,
+.pp-compare tr:last-child td {
+    border-bottom: 0;
+}
+
+.pp-compare thead th {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-soft);
+}
+
+.pp-compare tbody th {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--slate);
+    width: 22%;
+}
+
+.pp-compare td.here {
+    color: var(--lightest-slate);
+}
+
+/* link cards */
+.pp-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 28px;
+}
+
+.pp-link {
+    display: block;
+    background: var(--light-navy);
+    border: 1px solid var(--lightest-navy);
+    border-radius: 10px;
+    padding: 18px 20px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.pp-link:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.pp-link b {
+    display: block;
+    color: var(--lightest-slate);
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.pp-link span {
+    color: var(--slate);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.pp-link em {
+    display: block;
+    margin-top: 10px;
+    font-style: normal;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+}
+
+/* reveal on scroll (only active when JS adds .js) */
+.js .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.js .reveal.in {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .js .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .pp-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .pp-hero-visual {
+        order: -1;
+    }
+
+    .pp-hero-visual .browser-frame {
+        transform: none;
+    }
+
+    .pp-metrics,
+    .pp-tools,
+    .pp-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pp-pipeline {
+        flex-direction: column;
+    }
+
+    .pp-pipeline>li {
+        margin: 0 0 28px;
+    }
+
+    .pp-pipeline>li:last-child {
+        margin-bottom: 0;
+    }
+
+    .pp-pipeline>li:not(:last-child)::after {
+        content: "\2193";
+        right: auto;
+        left: 24px;
+        top: auto;
+        bottom: -26px;
+        transform: none;
+    }
+
+    .pp-challenge {
+        grid-template-columns: 1fr;
+    }
+
+    .pp-challenge>div+div {
+        border-left: 0;
+        border-top: 1px solid var(--lightest-navy);
+    }
+}
+
+@media (max-width: 560px) {
+
+    .pp-metrics,
+    .pp-tools,
+    .pp-links {
+        grid-template-columns: 1fr;
+    }
+
+    .pp-compare thead {
+        display: none;
+    }
+
+    .pp-compare tr {
+        display: block;
+        border-bottom: 1px solid var(--lightest-navy);
+    }
+
+    .pp-compare th,
+    .pp-compare td {
+        display: block;
+        width: auto;
+        border: 0;
+        padding: 6px 16px;
+    }
+}

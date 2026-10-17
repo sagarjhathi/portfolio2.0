@@ -1105,6 +1105,18 @@ p {
 }
 
 /* Playwright card: facts panel in place of a video */
+.browser-frame > a {
+    display: block;
+    line-height: 0;
+}
+
+.project-thumb {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
 .facts-panel {
     margin: 0;
     padding: 8px 22px;
