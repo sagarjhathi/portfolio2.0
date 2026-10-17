@@ -35,6 +35,16 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Arriving from another page with #section: jump straight to the section instead of gliding down from the top -->
+    <script>
+        if (location.hash) {
+            document.documentElement.style.scrollBehavior = 'auto';
+            window.addEventListener('load', function () {
+                setTimeout(function () { document.documentElement.style.scrollBehavior = ''; }, 400);
+            });
+        }
+    </script>
 </head>
 
 <body>
@@ -437,7 +447,7 @@
                 <div class="projects-grid">
 
                     <!-- Featured Project 1: Amazon automation - Java + Selenium -->
-                    <div class="featured-project">
+                    <div class="featured-project" id="project-amazon-java">
                         <div class="project-visual">
                             <div class="browser-frame">
                                 <div class="browser-header">
@@ -489,7 +499,7 @@
                     </div>
 
                     <!-- Featured Project 2: Amazon automation - Playwright + TypeScript -->
-                    <div class="featured-project">
+                    <div class="featured-project" id="project-amazon-playwright">
                         <div class="project-content">
                             <span class="featured-label">Featured Project</span>
                             <h3 class="featured-title"><a href="project-amazon-playwright.html">Amazon Automation
@@ -544,7 +554,7 @@
                     </div>
 
                     <!-- Featured Project 3: YouTube validator -->
-                    <div class="featured-project">
+                    <div class="featured-project" id="project-youtube-java">
                         <div class="project-visual">
                             <div class="browser-frame">
                                 <div class="browser-header">
@@ -612,7 +622,7 @@
                     </div>
 
                     <!-- Featured Project 4: YouTube validator - Playwright + TypeScript -->
-                    <div class="featured-project">
+                    <div class="featured-project" id="project-youtube-playwright">
                         <div class="project-content">
                             <span class="featured-label">Featured Project</span>
                             <h3 class="featured-title"><a href="project-youtube-playwright.html">YouTube Language

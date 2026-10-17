@@ -513,3 +513,51 @@
 .pp-toc {
     -webkit-backdrop-filter: blur(10px);
 }
+
+/* back button */
+.pp-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding: 7px 18px 7px 8px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--light-slate);
+    border: 1px solid var(--lightest-navy);
+    border-radius: 999px;
+    background: rgba(17, 34, 64, 0.55);
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.pp-back .arrow {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-size: 1rem;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-line);
+    transition: transform 0.2s ease;
+}
+
+.pp-back:hover {
+    color: var(--accent);
+    border-color: var(--accent-line);
+    background: var(--accent-soft);
+    transform: translateX(-2px);
+}
+
+.pp-back:hover .arrow {
+    transform: translateX(-3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .pp-back,
+    .pp-back .arrow {
+        transition: none;
+    }
+}
