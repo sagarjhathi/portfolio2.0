@@ -2878,3 +2878,8 @@ body.no-scroll .header {
 .logo a {
     padding-left: 0;
 }
+
+/* landing on a project card from its page: keep it clear of the fixed header */
+.featured-project {
+    scroll-margin-top: 130px;
+}
