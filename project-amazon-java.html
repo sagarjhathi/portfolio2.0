@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Amazon filter E2E framework built with Java 21, Selenium 4 and TestNG. Layered architecture, SafeActions reliability layer, adaptive CI with 3 parallel shards, Extent and Allure reports on GitHub Pages.">
+    <title>Amazon Automation: Java + Selenium | Sagar Hathi</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a192f'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%2364ffda' text-anchor='middle'%3ESH%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&family=Inter:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="project-page.css">
+    <link rel="stylesheet" href="project-page-v2.css">
+</head>
+
+<body class="project-page accent-java">
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">&lt;Sagar Hathi/&gt;</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#projects" class="resume-btn">&larr; Back to Portfolio</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section pp-hero">
+            <div class="container">
+                <div class="pp-hero-grid">
+                    <div>
+                        <a class="pp-crumb" href="amazon-automation.html">&larr; Amazon Automation overview</a>
+                        <p class="pp-eyebrow">Personal Project &middot; Implementation 01</p>
+                        <h1 class="pp-title">Amazon Filter Automation<br>Java + Selenium</h1>
+                        <p class="pp-lead">
+                            A test framework that checks whether Amazon&rsquo;s search filters really work. It applies
+                            a filter, opens the real products, and confirms that each one matches what was selected.
+                            I built it like a small software product, not a pile of scripts.
+                        </p>
+                        <div class="pp-buttons">
+                            <a class="pp-btn primary" href="https://github.com/sagarjhathi/amazon-filter-e2e-automation-selenium-java"
+                                target="_blank" rel="noopener noreferrer">View Repository <span aria-hidden="true">&rarr;</span></a>
+                            <a class="pp-btn" href="https://sagarjhathi.github.io/amazon-filter-e2e-automation-selenium-java/"
+                                target="_blank" rel="noopener noreferrer">Live Reports</a>
+                            <a class="pp-btn" href="https://www.youtube.com/watch?v=KpBcAjqDjUI" target="_blank"
+                                rel="noopener noreferrer">Demo Video</a>
+                        </div>
+                        <ul class="pp-badges" aria-label="Main technologies">
+                            <li>Java 21</li>
+                            <li>Selenium 4</li>
+                            <li>TestNG</li>
+                            <li>Maven</li>
+                            <li>GitHub Actions</li>
+                            <li>Extent + Allure</li>
+                        </ul>
+                    </div>
+                    <div class="pp-hero-visual">
+                        <div class="browser-frame">
+                            <div class="browser-header">
+                                <div class="dot red"></div>
+                                <div class="dot yellow"></div>
+                                <div class="dot green"></div>
+                            </div>
+                            <a href="https://sagarjhathi.github.io/amazon-filter-e2e-automation-selenium-java/" target="_blank"
+                                rel="noopener noreferrer" aria-label="Open the live report hub">
+                                <img class="project-thumb" src="assets/thumb-amazon-java.svg"
+                                    alt="Amazon filter automation with Java and Selenium">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <dl class="pp-stats">
+                    <div><dt>Language</dt><dd>Java 21</dd></div>
+                    <div><dt>Runner</dt><dd>TestNG 7.10</dd></div>
+                    <div><dt>Browsers</dt><dd>Chrome, Firefox, Edge</dd></div>
+                    <div><dt>CI/CD</dt><dd>GitHub Actions</dd></div>
+                </dl>
+            </div>
+        </section>
+
+        <nav class="pp-toc" aria-label="On this page">
+            <div class="container">
+                <a href="#overview">Overview</a>
+                <a href="#features">What&rsquo;s special</a>
+                <a href="#architecture">Architecture</a>
+                <a href="#pipeline">CI pipeline</a>
+                <a href="#stack">Tech &amp; tools</a>
+                <a href="#compare">Java vs Playwright</a>
+                <a href="#run">Run &amp; demo</a>
+            </div>
+        </nav>
+
+        <section class="pp-section" id="overview">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">01.</span> Overview</h2>
+                <p class="pp-text">
+                    The framework searches for a product category, opens the listing page and applies filter
+                    combinations from a configuration file. After each filter it collects the product list, opens the
+                    product pages, and validates their details against the filter that was applied.
+                </p>
+                <p class="pp-text">
+                    It covers 11 filter areas: storage, battery, processor, discount, brands, display size, display
+                    type, camera, delivery options, the price slider and operating system. Every step is logged and
+                    every important action is captured in a screenshot, so a failed run can be understood without
+                    re-running it.
+                </p>
+                <div class="pp-metrics reveal">
+                    <div class="pp-metric"><strong>11</strong><span>filter areas validated against real product pages</span></div>
+                    <div class="pp-metric"><strong>3</strong><span>parallel CI shards, one per TestNG group</span></div>
+                    <div class="pp-metric"><strong>3</strong><span>browsers supported: Chrome, Firefox and Edge</span></div>
+                    <div class="pp-metric"><strong>2</strong><span>report formats per run: Extent and Allure</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pp-section" id="features">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">02.</span> What makes it special</h2>
+                <div class="pp-cards">
+                    <article class="pp-card reveal">
+                        <span class="tag">Design</span>
+                        <h3>Layered, like a product</h3>
+                        <p>Tests, flows, pages, a reliability layer and utilities each have one job. Adding a new
+                            filter means adding a flow, not rewriting tests.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">Reliability</span>
+                        <h3>SafeActions layer</h3>
+                        <p>A custom wrapper around Selenium that adds waits, retries for stale or unavailable
+                            elements, automatic screenshots and consistent logging in one place. Tests stay short and
+                            stable.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">Speed</span>
+                        <h3>Parallel and isolated</h3>
+                        <p>Each test gets its own WebDriver through ThreadLocal, so tests run in parallel without
+                            interfering with each other.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">CI</span>
+                        <h3>Adaptive test depth</h3>
+                        <p>A code push runs a small, fast sample. The nightly CRON run tests every filter and every
+                            product. The pipeline decides this by itself, with no manual switches.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">Evidence</span>
+                        <h3>One folder per run</h3>
+                        <p>Every run writes to its own timestamped folder with reports, a log file per test and
+                            screenshots grouped by test, so output from parallel tests never mixes.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">Delivery</span>
+                        <h3>Results reach people</h3>
+                        <p>Extent reports and a merged Allure report go to GitHub Pages. Discord messages announce
+                            each run start and finish with links to the report and artifacts.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">Resilience</span>
+                        <h3>Reports publish even after failures</h3>
+                        <p>The publish job runs even when some shards fail, so the failing run is the one with a
+                            report to read, not the one without.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">Data</span>
+                        <h3>Data-driven and configurable</h3>
+                        <p>Test data lives in an Excel file read with Apache POI. Run depth, browser and headless mode
+                            come from a central properties file and Maven flags.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="pp-section" id="architecture">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">03.</span> Architecture</h2>
+                <p class="pp-text">Each layer only talks to the layer below it, so a change in one place stays in that place.</p>
+                <ol class="pp-layers">
+                    <li><strong>Test layer</strong><span>AmazonTests and TestNG data providers decide what is verified.</span></li>
+                    <li><strong>Flow layer</strong><span>Shared and specialised flows for brand, discount, operating system, delivery and price.</span></li>
+                    <li><strong>Page layer</strong><span>AmazonLandingPage and ProductListingPage hold locators and single-page actions.</span></li>
+                    <li><strong>SafeActions layer</strong><span>Stable click, type, scroll and lookup with retries, waits and screenshots.</span></li>
+                    <li><strong>Driver &amp; utilities</strong><span>DriverManager, ConfigManager, WaitUtility, GenericUtility and ExcelReader.</span></li>
+                    <li><strong>Reporting &amp; logging</strong><span>ExtentReports, Allure and Log4j2 produce the per-run artifacts.</span></li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="pp-section" id="pipeline">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">04.</span> CI pipeline</h2>
+                <p class="pp-text">One GitHub Actions workflow takes a trigger all the way to a published report and a chat message.</p>
+                <ol class="pp-pipeline reveal">
+                    <li>
+                        <h3>1 &middot; Trigger</h3>
+                        <p>Push, pull request, nightly CRON or a manual run.</p>
+                    </li>
+                    <li>
+                        <h3>2 &middot; Choose depth</h3>
+                        <p>Pushes use a reduced filter and product count. The nightly run goes full depth.</p>
+                    </li>
+                    <li>
+                        <h3>3 &middot; Parallel shards</h3>
+                        <p>One runner per TestNG group, each uploading logs, screenshots and reports.</p>
+                        <div class="fan"><span>BatteryProcessorStorage</span><span>BrandsScreenSizeTypeCamEtc</span><span>DeliveryPriceOs</span></div>
+                    </li>
+                    <li>
+                        <h3>4 &middot; Publish</h3>
+                        <p>Merges Allure results, builds a hub page with the Extent reports and deploys to GitHub Pages.</p>
+                    </li>
+                    <li>
+                        <h3>5 &middot; Notify</h3>
+                        <p>Discord messages for run start and finish, with report links.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="pp-section" id="stack">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">05.</span> Tech &amp; tools, by importance</h2>
+                <p class="pp-text">Listed from the tools the project cannot work without to the ones that make it pleasant to run and share.</p>
+
+                <div class="pp-tier reveal">
+                    <div class="pp-tier-label"><b>Tier 1</b> Core</div>
+                    <div class="pp-tools">
+                        <div class="pp-tool"><h3>Java 21</h3><span class="role">Language</span><p>Strong typing and a mature ecosystem, which keeps a large framework easy to refactor.</p></div>
+                        <div class="pp-tool"><h3>Selenium 4.27</h3><span class="role">Browser automation</span><p>W3C-compliant WebDriver control of Chrome, Firefox and Edge, with configurable headless mode, window size and user agent.</p></div>
+                        <div class="pp-tool"><h3>TestNG 7.10</h3><span class="role">Test engine</span><p>Method-level parallelism, data providers, listeners, groups and retry analyzers, all of which a UI suite needs.</p></div>
+                    </div>
+                </div>
+
+                <div class="pp-tier reveal">
+                    <div class="pp-tier-label"><b>Tier 2</b> Framework design</div>
+                    <div class="pp-tools">
+                        <div class="pp-tool"><h3>Page Object Model + flows</h3><span class="role">Structure</span><p>Locators live in pages and multi-step journeys live in flows, so tests read like a checklist.</p></div>
+                        <div class="pp-tool"><h3>SafeActions</h3><span class="role">Custom reliability layer</span><p>Waits, retries for stale elements, screenshots and logging for every browser action, in one place.</p></div>
+                        <div class="pp-tool"><h3>Apache POI 5.4.1 + ConfigManager</h3><span class="role">Data and configuration</span><p>Excel test data plus a central properties file, so new cases and run depth are data changes.</p></div>
+                    </div>
+                </div>
+
+                <div class="pp-tier reveal">
+                    <div class="pp-tier-label"><b>Tier 3</b> Reporting &amp; observability</div>
+                    <div class="pp-tools">
+                        <div class="pp-tool"><h3>ExtentReports (Spark)</h3><span class="role">HTML report</span><p>A self-contained report per shard with embedded screenshots and linked logs.</p></div>
+                        <div class="pp-tool"><h3>Allure</h3><span class="role">Merged dashboard</span><p>Results from every shard combined into one report in the publish job.</p></div>
+                        <div class="pp-tool"><h3>Log4j2</h3><span class="role">Logging</span><p>Routing appenders write a folder per run and a file per test, so parallel output stays separate.</p></div>
+                    </div>
+                </div>
+
+                <div class="pp-tier reveal">
+                    <div class="pp-tier-label"><b>Tier 4</b> Build &amp; delivery</div>
+                    <div class="pp-tools">
+                        <div class="pp-tool"><h3>Maven + WebDriverManager 6.1.0</h3><span class="role">Build and drivers</span><p>One command runs the suite, and the right browser driver is resolved automatically.</p></div>
+                        <div class="pp-tool"><h3>GitHub Actions</h3><span class="role">CI/CD</span><p>Push, pull request, nightly CRON and manual triggers, with a matrix of parallel shards.</p></div>
+                        <div class="pp-tool"><h3>GitHub Pages + Discord webhooks</h3><span class="role">Sharing results</span><p>The latest report is one click away from the chat message and the CI page.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="pp-section" id="compare">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">06.</span> Same problem, two stacks</h2>
+                <p class="pp-text">I rebuilt this project with <a href="project-amazon-playwright.html" style="color:var(--accent)">Playwright and TypeScript</a> to compare the stacks on the same scenarios.</p>
+                <table class="pp-compare reveal">
+                    <thead><tr><th></th><th>Java + Selenium (this page)</th><th>Playwright + TypeScript</th></tr></thead>
+                    <tbody>
+                        <tr><th>Runner</th><td class="here">TestNG 7.10</td><td>Playwright Test</td></tr>
+                        <tr><th>Waiting</th><td class="here">Explicit waits and retries in SafeActions</td><td>Built-in auto-waiting</td></tr>
+                        <tr><th>Test data</th><td class="here">Excel through Apache POI</td><td>Run-size config in RunConfig.ts</td></tr>
+                        <tr><th>CI shards</th><td class="here">3, one per TestNG group</td><td>4, split by test count</td></tr>
+                        <tr><th>Reports</th><td class="here">Extent (per shard) + merged Allure</td><td>Merged HTML + Allure</td></tr>
+                        <tr><th>Browsers</th><td class="here">Chrome, Firefox, Edge</td><td>Chromium</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="pp-section" id="run">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">07.</span> Run it &amp; watch it</h2>
+                <div class="pp-links">
+                    <a class="pp-link" href="https://sagarjhathi.github.io/amazon-filter-e2e-automation-selenium-java/" target="_blank" rel="noopener noreferrer"><b>Live report hub</b><span>The latest Extent reports and the merged Allure dashboard.</span><em>Open reports &rarr;</em></a>
+                    <a class="pp-link" href="https://github.com/sagarjhathi/amazon-filter-e2e-automation-selenium-java" target="_blank" rel="noopener noreferrer"><b>Source code</b><span>The full framework, workflow and README on GitHub.</span><em>View repository &rarr;</em></a>
+                    <a class="pp-link" href="https://www.youtube.com/watch?v=KpBcAjqDjUI" target="_blank" rel="noopener noreferrer"><b>Demo video</b><span>A recorded run of the suite.</span><em>Watch on YouTube &rarr;</em></a>
+                </div>
+                <pre class="pp-code"><span class="c"># quick smoke run</span>
+mvn clean test -DrunForAllFilterOptions=false -DoverideFilteOptionsCount=2
+
+<span class="c"># full regression</span>
+mvn clean test -DrunForAllFilterOptions=true -DrunForAllProductsUnderListing=true
+
+<span class="c"># one group only</span>
+mvn clean test -Dgroups=DeliveryPriceOs</pre>
+                <p class="pp-note">
+                    Known limits: Amazon may show a captcha during automated runs, and retrying usually clears it.
+                    Reports need GitHub Pages to finish deploying before their links work. For learning and portfolio
+                    use only, not affiliated with or endorsed by Amazon, whose terms may restrict automated access.
+                </p>
+
+                <div class="pp-video" style="margin-top:28px">
+                    <iframe src="https://www.youtube.com/embed/KpBcAjqDjUI" title="Amazon automation demo"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen loading="lazy"></iframe>
+                </div>
+
+                <nav class="pp-nav" aria-label="Project navigation">
+                    <a href="index.html#projects">&larr; All projects</a>
+                    <a href="project-amazon-playwright.html">Next: Playwright + TypeScript &rarr;</a>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="copyright">Designed &amp; Built by Sagar</p>
+        </div>
+    </footer>
+    <script src="project-page.js"></script>
+</body>
+
+</html>

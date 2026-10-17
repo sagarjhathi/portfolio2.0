@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Amazon filter E2E tests rebuilt with Playwright and TypeScript. Layered tests, flows and pages, soft assertions, 4-shard CI with merged Playwright and Allure reports on GitHub Pages.">
+    <title>Amazon Automation: Playwright + TypeScript | Sagar Hathi</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a192f'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%2364ffda' text-anchor='middle'%3ESH%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&family=Inter:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="project-page.css">
+    <link rel="stylesheet" href="project-page-v2.css">
+</head>
+
+<body class="project-page accent-ts">
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">&lt;Sagar Hathi/&gt;</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#projects" class="resume-btn">&larr; Back to Portfolio</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section pp-hero">
+            <div class="container">
+                <div class="pp-hero-grid">
+                    <div>
+                        <a class="pp-crumb" href="amazon-automation.html">&larr; Amazon Automation overview</a>
+                        <p class="pp-eyebrow">Personal Project &middot; Implementation 02</p>
+                        <h1 class="pp-title">Amazon Filter Automation<br>Playwright + TypeScript</h1>
+                        <p class="pp-lead">
+                            The same Amazon filter checks as my Java project, rebuilt from scratch with Playwright and
+                            TypeScript. Building it twice let me compare the two stacks on the same problem, and see
+                            what each one does better.
+                        </p>
+                        <div class="pp-buttons">
+                            <a class="pp-btn primary" href="https://github.com/sagarjhathi/amazon-e2e-filter-automation-playwright-ts"
+                                target="_blank" rel="noopener noreferrer">View Repository <span aria-hidden="true">&rarr;</span></a>
+                            <a class="pp-btn" href="https://sagarjhathi.github.io/amazon-e2e-filter-automation-playwright-ts/"
+                                target="_blank" rel="noopener noreferrer">Live Reports</a>
+                            <a class="pp-btn" href="project-amazon-java.html">See the Java version</a>
+                        </div>
+                        <ul class="pp-badges" aria-label="Main technologies">
+                            <li>TypeScript</li>
+                            <li>Playwright</li>
+                            <li>Node.js 22</li>
+                            <li>ESLint</li>
+                            <li>GitHub Actions</li>
+                            <li>Allure</li>
+                        </ul>
+                    </div>
+                    <div class="pp-hero-visual">
+                        <div class="browser-frame">
+                            <div class="browser-header">
+                                <div class="dot red"></div>
+                                <div class="dot yellow"></div>
+                                <div class="dot green"></div>
+                            </div>
+                            <a href="https://sagarjhathi.github.io/amazon-e2e-filter-automation-playwright-ts/" target="_blank"
+                                rel="noopener noreferrer" aria-label="Open the live reports">
+                                <img class="project-thumb" src="assets/thumb-amazon-playwright.svg"
+                                    alt="Amazon filter automation with Playwright and TypeScript">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <dl class="pp-stats">
+                    <div><dt>Language</dt><dd>TypeScript</dd></div>
+                    <div><dt>Runner</dt><dd>Playwright Test</dd></div>
+                    <div><dt>Browser</dt><dd>Chromium</dd></div>
+                    <div><dt>CI/CD</dt><dd>GitHub Actions</dd></div>
+                </dl>
+            </div>
+        </section>
+
+        <nav class="pp-toc" aria-label="On this page">
+            <div class="container">
+                <a href="#overview">Overview</a>
+                <a href="#features">What&rsquo;s special</a>
+                <a href="#architecture">Architecture</a>
+                <a href="#pipeline">CI pipeline</a>
+                <a href="#stack">Tech &amp; tools</a>
+                <a href="#compare">Java vs Playwright</a>
+                <a href="#run">Run &amp; reports</a>
+            </div>
+        </nav>
+
+        <section class="pp-section" id="overview">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">01.</span> Overview</h2>
+                <p class="pp-text">
+                    The suite searches amazon.in for &ldquo;Mobile&rdquo;, applies each filter option in the left
+                    navigation, then checks that the products shown match the filter. It runs against the live site,
+                    either locally or on GitHub Actions. There are 8 tests:
+                </p>
+                <ul class="pp-list">
+                    <li><strong>Brand filter.</strong> For each brand, every product title must contain the brand name or a known alias, for example &ldquo;Moto&rdquo; for Motorola.</li>
+                    <li><strong>Specification filters.</strong> For storage, battery, discount, display size, display type, camera resolution and processor speed, the test opens the first products in separate tabs and checks the title, key features and technical details against the filter value.</li>
+                </ul>
+                <div class="pp-metrics reveal">
+                    <div class="pp-metric"><strong>8</strong><span>tests covering brand and seven specification filters</span></div>
+                    <div class="pp-metric"><strong>4 &times; 2</strong><span>CI shards times workers, so 8 tests can run side by side</span></div>
+                    <div class="pp-metric"><strong>2</strong><span>automatic retries on CI before a test is reported as failed</span></div>
+                    <div class="pp-metric"><strong>3</strong><span>CI jobs: type-check, sharded tests, merged reports</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pp-section" id="features">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">02.</span> What makes it special</h2>
+                <div class="pp-cards">
+                    <article class="pp-card reveal">
+                        <span class="tag">Assertions</span>
+                        <h3>Every mismatch in one run</h3>
+                        <p>Tests use <code>expect.soft</code>, so a run reports all the mismatches it finds instead
+                            of stopping at the first one.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">Readability</span>
+                        <h3>Tests read like a checklist</h3>
+                        <p>Flows handle the multi-step work across pages and tabs and hand back plain results. The
+                            test itself is a few readable lines that loop and assert.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">Resilience</span>
+                        <h3>Built for a live, unreliable site</h3>
+                        <p>It moves past Amazon&rsquo;s &ldquo;Continue shopping&rdquo; page, reloads on a
+                            &ldquo;Service Unavailable&rdquo; page, and logs the URL and title when a page does not
+                            load. It does not try to solve any challenge.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">Honesty</span>
+                        <h3>Skips instead of guessing</h3>
+                        <p>If a filter is missing from the navigation, the test is skipped with a reason, so a run
+                            of skips points at the site rather than silently passing.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">CI</span>
+                        <h3>Sharded and merged</h3>
+                        <p>CI splits the tests into 4 parallel shards with 2 workers each, then merges the shard
+                            results into one Playwright report and one Allure report.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">Config</span>
+                        <h3>Two run sizes</h3>
+                        <p>A standard run covers the first 5 filter options with 3 products each. The daily run goes
+                            wider: all options, 5 products each. Environment variables can override both.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">Quality gate</span>
+                        <h3>Type-check before tests</h3>
+                        <p>A separate job runs lint and the TypeScript compiler first, so type errors fail fast
+                            before any browser starts.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">Comparison</span>
+                        <h3>A fair side-by-side</h3>
+                        <p>Same scenarios, same site, different stack. It shows how Playwright&rsquo;s auto-waiting
+                            and built-in parallel runner change the amount of code needed.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="pp-section" id="architecture">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">03.</span> Architecture</h2>
+                <p class="pp-text">Each layer calls only the layer below it.</p>
+                <ol class="pp-layers">
+                    <li><strong>tests</strong><span>What is verified, in a few readable lines (AmazonAll.spec.ts).</span></li>
+                    <li><strong>flows</strong><span>Multi-step journeys across pages and tabs. They return plain results.</span></li>
+                    <li><strong>pages</strong><span>Locators and single-page actions: AmazonLandingPage and ProductListingPage.</span></li>
+                    <li><strong>utils</strong><span>Run sizing (RunConfig), screenshots, 503 recovery and the &ldquo;Continue shopping&rdquo; handler.</span></li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="pp-section" id="pipeline">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">04.</span> CI pipeline</h2>
+                <p class="pp-text">Older push and pull request runs on the same branch are cancelled, while scheduled and manual runs are never cancelled.</p>
+                <ol class="pp-pipeline reveal">
+                    <li>
+                        <h3>1 &middot; Trigger</h3>
+                        <p>Push or pull request to master, daily at 20:00 UTC, or a manual run.</p>
+                    </li>
+                    <li>
+                        <h3>2 &middot; Typecheck</h3>
+                        <p>Lint and the TypeScript compiler run once, before any browser starts.</p>
+                    </li>
+                    <li>
+                        <h3>3 &middot; Test</h3>
+                        <p>4 parallel shards, 2 workers each, up to 2 retries. Each shard uploads a blob report and Allure results.</p>
+                        <div class="fan"><span>shard 1/4</span><span>shard 2/4</span><span>shard 3/4</span><span>shard 4/4</span></div>
+                    </li>
+                    <li>
+                        <h3>4 &middot; Merge reports</h3>
+                        <p>Shard results become one Playwright HTML report and one Allure report.</p>
+                    </li>
+                    <li>
+                        <h3>5 &middot; Publish</h3>
+                        <p>Pushes to master, scheduled and manual runs deploy to GitHub Pages. Pull requests only build.</p>
+                    </li>
+                </ol>
+                <p class="pp-text" style="margin-top:16px">
+                    CI keeps no traces, because they made reports very large. A failed test keeps its video and a
+                    failure screenshot. Locally, failures also keep a full trace.
+                </p>
+            </div>
+        </section>
+
+        <section class="pp-section" id="stack">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">05.</span> Tech &amp; tools, by importance</h2>
+                <p class="pp-text">Listed from the tools the project cannot work without to the ones that make it pleasant to run and share.</p>
+
+                <div class="pp-tier reveal">
+                    <div class="pp-tier-label"><b>Tier 1</b> Core</div>
+                    <div class="pp-tools">
+                        <div class="pp-tool"><h3>TypeScript</h3><span class="role">Language</span><p>Static types catch broken selectors and result shapes before a test ever runs.</p></div>
+                        <div class="pp-tool"><h3>Playwright Test</h3><span class="role">Runner + browser automation</span><p>Auto-waiting, a built-in parallel runner, retries, sharding and reporters in one package, driving Chromium.</p></div>
+                        <div class="pp-tool"><h3>Node.js</h3><span class="role">Runtime</span><p>Current LTS locally, and Node 22 on CI.</p></div>
+                    </div>
+                </div>
+
+                <div class="pp-tier reveal">
+                    <div class="pp-tier-label"><b>Tier 2</b> Framework design</div>
+                    <div class="pp-tools">
+                        <div class="pp-tool"><h3>Page objects + flows</h3><span class="role">Structure</span><p>Locators stay in pages, journeys stay in flows, and the tests stay short.</p></div>
+                        <div class="pp-tool"><h3>expect.soft</h3><span class="role">Assertions</span><p>Collects every mismatch in a run rather than failing on the first one.</p></div>
+                        <div class="pp-tool"><h3>RunConfig</h3><span class="role">Run sizing</span><p>Standard and cron modes, with <code>FILTER_OPTIONS</code> and <code>PRODUCTS</code> overrides that accept a number or <code>all</code>.</p></div>
+                    </div>
+                </div>
+
+                <div class="pp-tier reveal">
+                    <div class="pp-tier-label"><b>Tier 3</b> Quality &amp; reporting</div>
+                    <div class="pp-tools">
+                        <div class="pp-tool"><h3>ESLint + typescript-eslint</h3><span class="role">Lint</span><p>A lint and type-check gate that runs as its own CI job.</p></div>
+                        <div class="pp-tool"><h3>Playwright HTML report</h3><span class="role">Debugging</span><p>Steps, screenshots and videos, merged from all shards into one report.</p></div>
+                        <div class="pp-tool"><h3>Allure</h3><span class="role">Trends</span><p>Overview, suites and trend graphs that carry history across published runs.</p></div>
+                    </div>
+                </div>
+
+                <div class="pp-tier reveal">
+                    <div class="pp-tier-label"><b>Tier 4</b> Delivery</div>
+                    <div class="pp-tools">
+                        <div class="pp-tool"><h3>GitHub Actions</h3><span class="role">CI/CD</span><p>Matrix sharding, cancel-in-progress for stale runs and a report-merging job.</p></div>
+                        <div class="pp-tool"><h3>GitHub Pages</h3><span class="role">Hosting</span><p>A landing page with the Playwright and Allure reports, replaced on every publish.</p></div>
+                        <div class="pp-tool"><h3>Failure evidence</h3><span class="role">Videos and screenshots</span><p>Kept for failed tests on CI to save space, with full traces locally.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="pp-section" id="compare">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">06.</span> Same problem, two stacks</h2>
+                <p class="pp-text">Compared with the <a href="project-amazon-java.html" style="color:var(--accent)">Java and Selenium version</a> built on the same scenarios.</p>
+                <table class="pp-compare reveal">
+                    <thead><tr><th></th><th>Java + Selenium</th><th>Playwright + TypeScript (this page)</th></tr></thead>
+                    <tbody>
+                        <tr><th>Runner</th><td>TestNG 7.10</td><td class="here">Playwright Test</td></tr>
+                        <tr><th>Waiting</th><td>Explicit waits and retries in SafeActions</td><td class="here">Built-in auto-waiting</td></tr>
+                        <tr><th>Test data</th><td>Excel through Apache POI</td><td class="here">Run-size config in RunConfig.ts</td></tr>
+                        <tr><th>CI shards</th><td>3, one per TestNG group</td><td class="here">4, split by test count</td></tr>
+                        <tr><th>Reports</th><td>Extent (per shard) + merged Allure</td><td class="here">Merged HTML + Allure</td></tr>
+                        <tr><th>Browsers</th><td>Chrome, Firefox, Edge</td><td class="here">Chromium</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="pp-section" id="run">
+            <div class="container">
+                <h2 class="pp-h2"><span class="num">07.</span> Run it &amp; see the reports</h2>
+                <div class="pp-links">
+                    <a class="pp-link" href="https://sagarjhathi.github.io/amazon-e2e-filter-automation-playwright-ts/" target="_blank" rel="noopener noreferrer"><b>Live reports</b><span>The latest Playwright HTML and Allure reports.</span><em>Open reports &rarr;</em></a>
+                    <a class="pp-link" href="https://github.com/sagarjhathi/amazon-e2e-filter-automation-playwright-ts" target="_blank" rel="noopener noreferrer"><b>Source code</b><span>The tests, flows, pages and workflow on GitHub.</span><em>View repository &rarr;</em></a>
+                    <a class="pp-link" href="project-amazon-java.html"><b>Java version</b><span>The same checks built with Java, Selenium and TestNG.</span><em>Compare &rarr;</em></a>
+                </div>
+                <pre class="pp-code">npm ci
+npx playwright install chromium
+
+npx playwright test              <span class="c"># all tests</span>
+npx playwright test --headed     <span class="c"># watch the browser</span>
+npx playwright show-report       <span class="c"># open the last report</span></pre>
+                <p class="pp-note">
+                    Known limits: Amazon can block automation or show an unavailable page, especially from CI
+                    servers, so a run of skips may reflect the site and not a defect. The specification check is
+                    literal, so range filters such as &ldquo;Up to 2,999 mAh&rdquo; are reported as mismatches until
+                    a numeric comparison is added. For education only, unofficial and not affiliated with Amazon,
+                    whose terms may restrict automated access.
+                </p>
+
+                <nav class="pp-nav" aria-label="Project navigation">
+                    <a href="project-amazon-java.html">&larr; Previous: Java + Selenium</a>
+                    <a href="project-youtube-validator.html">Next: YouTube Language Validator &rarr;</a>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="copyright">Designed &amp; Built by Sagar</p>
+        </div>
+    </footer>
+    <script src="project-page.js"></script>
+</body>
+
+</html>

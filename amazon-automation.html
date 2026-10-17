@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Amazon filter E2E automation built twice: Java + Selenium and Playwright + TypeScript.">
+    <title>Amazon Automation Framework | Sagar Hathi</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a192f'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%2364ffda' text-anchor='middle'%3ESH%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&family=Inter:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="repo-compare.css">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">&lt;Sagar Hathi/&gt;</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#projects" class="resume-btn">&larr; Back to Portfolio</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section compare-hero">
+            <div class="container">
+                <p class="compare-eyebrow">Personal Project</p>
+                <h1 class="compare-title">Amazon Automation Framework</h1>
+                <p class="compare-lead">
+                    One problem, two stacks. This end-to-end suite verifies that Amazon search filters return
+                    results that truly match the selected criteria. I built it with Java and Selenium first, then
+                    rebuilt it with Playwright and TypeScript to compare the two approaches. Pick one to open its
+                    repository.
+                </p>
+
+                <div class="repo-grid">
+
+                    <!-- Repo 1: Java -->
+                    <article class="repo-card repo-card--java" id="java">
+                        <div class="repo-card-head">
+                            <span class="repo-mono">JAVA</span>
+                            <div>
+                                <span class="repo-badge">Implementation 01</span>
+                                <h2 class="repo-name">Java + Selenium</h2>
+                            </div>
+                        </div>
+
+                        <dl class="repo-facts">
+                            <div><dt>Runner</dt><dd>TestNG</dd></div>
+                            <div><dt>Build</dt><dd>Maven</dd></div>
+                            <div><dt>Reports</dt><dd>Extent Spark</dd></div>
+                            <div><dt>CI/CD</dt><dd>GitHub Actions</dd></div>
+                        </dl>
+
+                        <ul class="repo-points">
+                            <li>Page Object Model with Excel-driven test data (Apache POI)</li>
+                            <li>Parallel, cross-browser runs on Chrome, Firefox and Edge</li>
+                            <li>Pipeline publishes the report to GitHub Pages and alerts Discord</li>
+                        </ul>
+
+                        <ul class="repo-tech">
+                            <li>Selenium WebDriver</li>
+                            <li>Log4j2</li>
+                            <li>WebDriverManager</li>
+                            <li>Data-Driven Testing</li>
+                        </ul>
+
+                        <div class="repo-actions">
+                            <a class="repo-btn primary repo-link" target="_blank" rel="noopener noreferrer"
+                                href="https://github.com/sagarjhathi/amazon-filter-e2e-automation-selenium-java">
+                                View Repository <span aria-hidden="true">&rarr;</span>
+                            </a>
+                            <a class="repo-btn" target="_blank" rel="noopener noreferrer"
+                                href="https://www.youtube.com/watch?v=KpBcAjqDjUI">Demo Video</a>
+                            <a class="repo-btn" href="project-amazon-java.html">Project details</a>
+                        </div>
+                    </article>
+
+                    <!-- Repo 2: Playwright -->
+                    <article class="repo-card repo-card--ts" id="playwright">
+                        <div class="repo-card-head">
+                            <span class="repo-mono">TS</span>
+                            <div>
+                                <span class="repo-badge">Implementation 02</span>
+                                <h2 class="repo-name">Playwright + TypeScript</h2>
+                            </div>
+                        </div>
+
+                        <dl class="repo-facts">
+                            <div><dt>Runner</dt><dd>Playwright Test</dd></div>
+                            <div><dt>Build</dt><dd>npm</dd></div>
+                            <div><dt>Reports</dt><dd>HTML Reporter</dd></div>
+                            <div><dt>CI/CD</dt><dd>GitHub Actions</dd></div>
+                        </dl>
+
+                        <ul class="repo-points">
+                            <li>Same filter validation, rebuilt with page objects and reusable multi-step flows</li>
+                            <li>CI runs 4 parallel shards with retries, then merges them into one HTML report</li>
+                            <li>Typecheck job, daily scheduled run, and video and screenshot on failures</li>
+                        </ul>
+
+                        <pre class="repo-code" aria-label="Illustrative code sample"><code><span class="c">// illustrative sample</span>
+<span class="k">test</span>(<span class="s">'brand filter matches results'</span>, <span class="k">async</span> ({ page }) =&gt; {
+  <span class="k">await</span> listing.applyFilter(<span class="s">'Brand'</span>, <span class="s">'Samsung'</span>);
+  <span class="k">await</span> expect(listing.titles).toContainText(<span class="s">/Samsung/i</span>);
+});</code></pre>
+
+                        <ul class="repo-tech">
+                            <li>Playwright</li>
+                            <li>TypeScript</li>
+                            <li>Node.js</li>
+                            <li>Allure</li>
+                        </ul>
+
+                        <div class="repo-actions">
+                            <a class="repo-btn primary repo-link" target="_blank" rel="noopener noreferrer"
+                                href="https://github.com/sagarjhathi/amazon-e2e-filter-automation-playwright-ts">
+                                View Repository <span aria-hidden="true">&rarr;</span>
+                            </a>
+                            <a class="repo-btn" href="project-amazon-playwright.html">Project details</a>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- Side-by-side comparison -->
+                <h2 class="compare-subtitle">Side by side</h2>
+                <div class="compare-table-wrap">
+                    <table class="compare-table">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Java + Selenium</th>
+                                <th scope="col">Playwright + TypeScript</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><th scope="row">Language</th><td>Java</td><td>TypeScript</td></tr>
+                            <tr><th scope="row">Browser control</th><td>Selenium WebDriver + WebDriverManager</td><td>Playwright (built in)</td></tr>
+                            <tr><th scope="row">Test runner</th><td>TestNG</td><td>Playwright Test</td></tr>
+                            <tr><th scope="row">Reporting</th><td>Extent Spark HTML</td><td>Playwright HTML Reporter</td></tr>
+                            <tr><th scope="row">Test data</th><td>Excel via Apache POI</td><td>Live site data, sampled per run via env-configured counts</td></tr>
+                            <tr><th scope="row">CI/CD</th><td>GitHub Actions + GitHub Pages</td><td>GitHub Actions (sharded, scheduled)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="copyright">Designed &amp; Built by Sagar</p>
+        </div>
+    </footer>
+</body>
+
+</html>
