@@ -2769,3 +2769,112 @@ body.header-shown .pp-toc {
         transition: none;
     }
 }
+
+/* ===== Cross-browser compatibility (Safari prefixes, modern viewport units) ===== */
+.header {
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.header.scrolled-up {
+    -webkit-backdrop-filter: blur(14px);
+}
+
+body.no-scroll .header {
+    -webkit-backdrop-filter: none;
+}
+
+.nav-backdrop {
+    -webkit-backdrop-filter: blur(3px);
+}
+
+@media (min-width: 769px) {
+    .nav-links ol {
+        -webkit-backdrop-filter: blur(6px);
+    }
+}
+
+/* mobile browsers: 100vh includes the collapsing address bar; use the small/dynamic viewport where supported */
+.hero-section {
+    min-height: 100vh;
+    min-height: 100svh;
+}
+
+@media (max-width: 768px) {
+    .nav-active .nav-links {
+        height: 100vh;
+        height: 100dvh;
+    }
+}
+
+/* ===== Header: keep one tidy row at every desktop/tablet width ===== */
+.logo a {
+    white-space: nowrap;
+}
+
+.logo a::before {
+    flex: none;
+}
+
+.logo,
+.resume-btn {
+    flex: none;
+}
+
+@media (min-width: 769px) and (max-width: 1100px) {
+    .header {
+        padding: 0 24px;
+    }
+
+    .logo a {
+        font-size: 16px;
+        padding: 10px 0;
+        gap: 10px;
+    }
+
+    .nav-links ol {
+        gap: 2px;
+        padding: 4px;
+    }
+
+    .nav-links ol a {
+        padding: 7px 11px;
+        font-size: 12.5px;
+    }
+
+    .nav-links ol a::before {
+        display: none;
+    }
+
+    .resume-btn {
+        margin-left: 16px;
+        padding: 0.6rem 0.9rem;
+        font-size: 12.5px;
+    }
+}
+
+/* ===== Wide screens: edge-free ambient glow, header aligned to the content column ===== */
+.hero-section::before {
+    display: none;
+}
+
+.ambient-glow {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 55% 45% at 78% 22%, rgba(var(--green-rgb), 0.07), transparent 70%),
+        radial-gradient(ellipse 50% 45% at 8% 92%, rgba(90, 169, 255, 0.07), transparent 70%);
+}
+
+@media (min-width: 1200px) {
+    .navbar {
+        max-width: 1150px;
+        margin: 0 auto;
+    }
+}
+
+/* line the logo badge up with the content edge */
+.logo a {
+    padding-left: 0;
+}
