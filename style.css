@@ -2460,3 +2460,312 @@ p {
         align-items: flex-start;
     }
 }
+
+/* ===== Header improvements ===== */
+
+/* skip link + keyboard focus */
+.skip-link {
+    position: fixed;
+    left: 16px;
+    top: -64px;
+    z-index: 1200;
+    padding: 10px 16px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--navy);
+    background: var(--green);
+    border-radius: 6px;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus,
+.skip-link:hover {
+    top: 14px;
+    color: var(--navy);
+}
+
+main:focus {
+    outline: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+.hamburger:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* logo hover */
+.logo a {
+    transition: letter-spacing 0.25s ease, text-shadow 0.25s ease;
+}
+
+.logo a:hover {
+    letter-spacing: 1.6px;
+    text-shadow: 0 0 18px rgba(var(--green-rgb), 0.45);
+}
+
+/* stronger header once scrolling */
+.header.scrolled-up {
+    background-color: rgba(var(--nav-bg-rgb), 0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(var(--green-rgb), 0.12);
+}
+
+/* numbered links with an animated underline for the active one */
+.nav-links ol {
+    counter-reset: nav;
+}
+
+.nav-links ol a {
+    padding: 6px 0;
+}
+
+.nav-links ol a::before {
+    counter-increment: nav;
+    content: "0" counter(nav) ".";
+    margin-right: 6px;
+    color: var(--green);
+    font-size: 12px;
+}
+
+.nav-links ol a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--green);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+}
+
+.nav-links ol a:hover::after,
+.nav-links ol a.active::after,
+.nav-links ol a[aria-current]::after {
+    transform: scaleX(1);
+}
+
+.nav-links ol a[aria-current] {
+    color: var(--green);
+}
+
+/* mobile menu: close button above the panel, backdrop, X icon, scroll lock */
+body.no-scroll {
+    overflow: hidden;
+}
+
+body.no-scroll .header {
+    transform: none !important;
+    backdrop-filter: none;
+}
+
+.hamburger {
+    position: relative;
+    z-index: 101;
+    padding: 6px 0;
+}
+
+.hamburger .bar {
+    transform-origin: center;
+}
+
+.hamburger.toggle .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.toggle .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.toggle .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.nav-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 998;
+    background: rgba(2, 12, 27, 0.65);
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.nav-backdrop.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@keyframes nav-in {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-active .nav-links {
+        animation: nav-in 0.3s ease;
+        min-width: 260px;
+    }
+}
+
+@media (min-width: 769px) {
+    .nav-backdrop {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .nav-active .nav-links {
+        animation: none;
+    }
+
+    .nav-backdrop,
+    .skip-link,
+    .logo a {
+        transition: none;
+    }
+}
+
+/* project pages: sticky section menu sits below the header when it is showing */
+.pp-toc {
+    transition: top 0.3s ease;
+}
+
+body.header-shown .pp-toc {
+    top: var(--nav-scroll-height);
+}
+
+/* ===== Header: monogram logo, pill nav, glowing hairline, richer Resume button ===== */
+
+.header {
+    background-image: linear-gradient(180deg, rgba(var(--green-rgb), 0.05), transparent 70%);
+}
+
+/* glowing hairline along the bottom edge */
+.header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent 0%, rgba(var(--green-rgb), 0.45) 50%, transparent 100%);
+}
+
+.header.scrolled-up {
+    border-bottom-color: transparent;
+}
+
+/* logo with a monogram badge */
+.logo a {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo a::before {
+    content: "SH";
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid rgba(var(--green-rgb), 0.5);
+    background: linear-gradient(145deg, rgba(var(--green-rgb), 0.2), rgba(var(--green-rgb), 0.04));
+    box-shadow: 0 0 18px -6px rgba(var(--green-rgb), 0.7);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.logo a:hover::before {
+    transform: rotate(-6deg) scale(1.06);
+    box-shadow: 0 0 22px -4px rgba(var(--green-rgb), 0.9);
+}
+
+/* Resume button: arrow + fill on hover */
+.resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.resume-btn::after {
+    content: "\2197";
+    font-size: 14px;
+    transition: transform 0.2s ease;
+}
+
+.resume-btn:hover {
+    background-color: var(--green);
+    color: var(--navy) !important;
+    box-shadow: 0 10px 24px -10px rgba(var(--green-rgb), 0.75);
+    transform: translateY(-2px);
+}
+
+.resume-btn:hover::after {
+    transform: translate(2px, -2px);
+}
+
+/* desktop: links sit in a glass pill, the active one is a filled chip */
+@media (min-width: 769px) {
+    .nav-links ol {
+        gap: 4px;
+        padding: 5px;
+        border: 1px solid var(--lightest-navy);
+        border-radius: 999px;
+        background: rgba(17, 34, 64, 0.55);
+        backdrop-filter: blur(6px);
+    }
+
+    .nav-links ol a {
+        padding: 8px 15px;
+        border-radius: 999px;
+        transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    .nav-links ol a::after {
+        display: none;
+    }
+
+    .nav-links ol a:hover {
+        background-color: rgba(var(--green-rgb), 0.08);
+    }
+
+    .nav-links ol a.active,
+    .nav-links ol a[aria-current] {
+        color: var(--green);
+        background-color: rgba(var(--green-rgb), 0.14);
+    }
+}
+
+@media (max-width: 480px) {
+    .logo a::before {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .logo a::before,
+    .resume-btn,
+    .resume-btn::after {
+        transition: none;
+    }
+}
