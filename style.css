@@ -2883,3 +2883,12 @@ body.no-scroll .header {
 .featured-project {
     scroll-margin-top: 130px;
 }
+
+/* Hero: single column now that the side card is gone */
+.hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.hero-grid .hero-desc {
+    max-width: 620px;
+}
