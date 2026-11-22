@@ -130,18 +130,23 @@
             <div class="container">
                 <h2 class="pp-h2"><span class="num">01.</span> Overview</h2>
                 <p class="pp-text">
-                    The suite searches amazon.in for &ldquo;Mobile&rdquo;, applies each filter option in the left
+                    The main suite searches amazon.in for each search term listed in a JSON file (for example
+                    &ldquo;Mobile&rdquo; or &ldquo;Laptop&rdquo;), applies each filter option in the left
                     navigation, then checks that the products shown match the filter. It runs against the live site,
-                    either locally or on GitHub Actions. There are 8 tests:
+                    either locally or on GitHub Actions. There are 8 kinds of test:
                 </p>
                 <ul class="pp-list">
                     <li><strong>Brand filter.</strong> For each brand, every product title must contain the brand name or a known alias, for example &ldquo;Moto&rdquo; for Motorola.</li>
                     <li><strong>Specification filters.</strong> For storage, battery, discount, display size, display type, camera resolution and processor speed, the test opens the first products in separate tabs and checks the title, key features and technical details against the filter value.</li>
                 </ul>
+                <p class="pp-text">
+                    A second suite, the <strong>card checks</strong>, is newer and still being extended. It is described
+                    in the next section.
+                </p>
                 <div class="pp-metrics reveal">
-                    <div class="pp-metric"><strong>8</strong><span>tests covering brand and seven specification filters</span></div>
-                    <div class="pp-metric"><strong>4 &times; 2</strong><span>CI shards times workers, so 8 tests can run side by side</span></div>
-                    <div class="pp-metric"><strong>2</strong><span>automatic retries on CI before a test is reported as failed</span></div>
+                    <div class="pp-metric"><strong>8</strong><span>kinds of test: brand and seven specification filters</span></div>
+                    <div class="pp-metric"><strong>4 &times; 2</strong><span>CI shards times workers, so several tests run side by side</span></div>
+                    <div class="pp-metric"><strong>1</strong><span>automatic retry before a test is reported as failed</span></div>
                     <div class="pp-metric"><strong>3</strong><span>CI jobs: type-check, sharded tests, merged reports</span></div>
                 </div>
             </div>
@@ -168,7 +173,7 @@
                         <h3>Built for a live, unreliable site</h3>
                         <p>It moves past Amazon&rsquo;s &ldquo;Continue shopping&rdquo; page, reloads on a
                             &ldquo;Service Unavailable&rdquo; page, and logs the URL and title when a page does not
-                            load. It does not try to solve any challenge.</p>
+                            load. It does not try to solve any captcha.</p>
                     </article>
                     <article class="pp-card reveal">
                         <span class="tag">Honesty</span>
@@ -184,9 +189,18 @@
                     </article>
                     <article class="pp-card reveal">
                         <span class="tag">Config</span>
-                        <h3>Two run sizes</h3>
-                        <p>A standard run covers the first 5 filter options with 3 products each. The daily run goes
-                            wider: all options, 5 products each. Environment variables can override both.</p>
+                        <h3>Configurable run size</h3>
+                        <p>How many filter options and products a run covers is a setting, not code. A quick run and a
+                            thorough daily run use different defaults, and environment variables can change either one.</p>
+                    </article>
+                    <article class="pp-card reveal">
+                        <span class="tag">Second suite</span>
+                        <h3>Card checks (in progress)</h3>
+                        <p>Some filters show an exact result on the page: a rating, a price, a printed discount, a
+                            delivery label. The card checks compare these with the product cards in the results list, or
+                            with the product page. Each item is judged as fits, does not fit or no value, and a check
+                            passes when enough judged items fit. If nothing can be judged, the check is inconclusive
+                            instead of failed. It has its own config and workflow.</p>
                     </article>
                     <article class="pp-card reveal">
                         <span class="tag">Quality gate</span>
@@ -232,7 +246,7 @@
                     </li>
                     <li>
                         <h3>3 &middot; Test</h3>
-                        <p>4 parallel shards, 2 workers each, up to 2 retries. Each shard uploads a blob report and Allure results.</p>
+                        <p>4 parallel shards, 2 workers each, one retry. Each shard uploads a blob report and Allure results.</p>
                         <div class="fan"><span>shard 1/4</span><span>shard 2/4</span><span>shard 3/4</span><span>shard 4/4</span></div>
                     </li>
                     <li>
@@ -245,8 +259,8 @@
                     </li>
                 </ol>
                 <p class="pp-text" style="margin-top:16px">
-                    CI keeps no traces, because they made reports very large. A failed test keeps its video and a
-                    failure screenshot. Locally, failures also keep a full trace.
+                    CI keeps no traces or videos, because they made reports very large. A failed test keeps a
+                    failure screenshot. Locally, failures also keep a full trace and a video.
                 </p>
             </div>
         </section>
@@ -278,7 +292,7 @@
                     <div class="pp-tier-label"><b>Tier 3</b> Quality &amp; reporting</div>
                     <div class="pp-tools">
                         <div class="pp-tool"><h3>ESLint + typescript-eslint</h3><span class="role">Lint</span><p>A lint and type-check gate that runs as its own CI job.</p></div>
-                        <div class="pp-tool"><h3>Playwright HTML report</h3><span class="role">Debugging</span><p>Steps, screenshots and videos, merged from all shards into one report.</p></div>
+                        <div class="pp-tool"><h3>Playwright HTML report</h3><span class="role">Debugging</span><p>Steps and screenshots, merged from all shards into one report.</p></div>
                         <div class="pp-tool"><h3>Allure</h3><span class="role">Trends</span><p>Overview, suites and trend graphs that carry history across published runs.</p></div>
                     </div>
                 </div>
@@ -288,7 +302,7 @@
                     <div class="pp-tools">
                         <div class="pp-tool"><h3>GitHub Actions</h3><span class="role">CI/CD</span><p>Matrix sharding, cancel-in-progress for stale runs and a report-merging job.</p></div>
                         <div class="pp-tool"><h3>GitHub Pages</h3><span class="role">Hosting</span><p>A landing page with the Playwright and Allure reports, replaced on every publish.</p></div>
-                        <div class="pp-tool"><h3>Failure evidence</h3><span class="role">Videos and screenshots</span><p>Kept for failed tests on CI to save space, with full traces locally.</p></div>
+                        <div class="pp-tool"><h3>Failure evidence</h3><span class="role">Screenshots, videos and traces</span><p>Failure screenshots on CI to save space, with videos and full traces locally.</p></div>
                     </div>
                 </div>
             </div>
@@ -302,7 +316,7 @@
                     <tbody>
                         <tr><th>Runner</th><td>TestNG 7.10</td><td class="here">Playwright Test</td></tr>
                         <tr><th>Waiting</th><td>Explicit waits and retries in SafeActions</td><td class="here">Built-in auto-waiting</td></tr>
-                        <tr><th>Test data</th><td>Excel through Apache POI</td><td class="here">Run-size config in RunConfig.ts</td></tr>
+                        <tr><th>Test data</th><td>JSON files (Excel also supported)</td><td class="here">JSON files + run-size config in RunConfig.ts</td></tr>
                         <tr><th>CI shards</th><td>3, one per TestNG group</td><td class="here">4, split by test count</td></tr>
                         <tr><th>Reports</th><td>Extent (per shard) + merged Allure</td><td class="here">Merged HTML + Allure</td></tr>
                         <tr><th>Browsers</th><td>Chrome, Firefox, Edge</td><td class="here">Chromium</td></tr>
@@ -329,8 +343,10 @@ npx playwright show-report       <span class="c"># open the last report</span></
                     Known limits: Amazon can block automation or show an unavailable page, especially from CI
                     servers, so a run of skips may reflect the site and not a defect. The specification check is
                     literal, so range filters such as &ldquo;Up to 2,999 mAh&rdquo; are reported as mismatches until
-                    a numeric comparison is added. For education only, unofficial and not affiliated with Amazon,
-                    whose terms may restrict automated access.
+                    a numeric comparison is added. The &ldquo;Continue shopping&rdquo; handler only detects that page and clicks through
+                    it; it does not solve or bypass captchas. This is a personal, educational project, not meant to break
+                    or get around any protection. It is unofficial and not affiliated with Amazon, whose terms may restrict
+                    automated access.
                 </p>
 
                 <nav class="pp-nav" aria-label="Project navigation">

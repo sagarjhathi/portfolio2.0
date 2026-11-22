@@ -106,7 +106,7 @@
                 </div>
 
                 <dl class="pp-stats">
-                    <div><dt>Checks</dt><dd>8 tests</dd></div>
+                    <div><dt>Checks</dt><dd>9 tests</dd></div>
                     <div><dt>Language</dt><dd>TypeScript</dd></div>
                     <div><dt>Detection</dt><dd>eld</dd></div>
                     <div><dt>CI/CD</dt><dd>GitHub Actions</dd></div>
@@ -132,7 +132,7 @@
                 <p class="pp-text">
                     The tests run against the live youtube.com, signed out, in a real browser. Nothing is mocked. For
                     each language row they select the language, wait for the reload, read the UI element under test,
-                    and compare it with expected data or detect its language. The 8 checks cover:
+                    and compare it with expected data or detect its language. The 9 checks cover:
                 </p>
                 <ul class="pp-list">
                     <li>The side menu, both expanded and collapsed</li>
@@ -157,7 +157,7 @@
                         <span class="tag">Intelligence</span>
                         <h3>Two ways to verify</h3>
                         <p>Exact text matching against expected data, plus language detection with the
-                            <code>eld</code> library. Tests whose names end in &ldquo;Lingua&rdquo; use detection.</p>
+                            <code>eld</code> library. The tests with &ldquo;Language&rdquo; in their name use detection.</p>
                     </article>
                     <article class="pp-card reveal">
                         <span class="tag">Assertions</span>
@@ -212,10 +212,10 @@
                 <h2 class="pp-h2"><span class="num">03.</span> Architecture</h2>
                 <p class="pp-text">Each layer builds on the one below it.</p>
                 <ol class="pp-layers">
-                    <li><strong>tests</strong><span>YtMasterSafeActions.spec.ts is the maintained suite. YtMaster.spec.ts is the original, plain Playwright version.</span></li>
+                    <li><strong>tests</strong><span>YtMasterSafeActions.spec.ts holds the browser checks. FallbackMechanisms.spec.ts runs offline and tests the SafeActions and loop-recovery helpers themselves.</span></li>
                     <li><strong>pages</strong><span>YtLandingPage holds the locators and page methods.</span></li>
                     <li><strong>utils</strong><span>SafeActions, GenericUtility (html lang checks, screenshots, iteration counts) and ReadJSON.</span></li>
-                    <li><strong>detection</strong><span>languageDetector built on <code>eld</code>, used by the &ldquo;Lingua&rdquo; tests.</span></li>
+                    <li><strong>detection</strong><span>languageDetector built on <code>eld</code>, used by the language-detection tests.</span></li>
                     <li><strong>configs &amp; data</strong><span>runconfig.json plus one JSON file of expected results per check.</span></li>
                 </ol>
             </div>
@@ -303,7 +303,7 @@
                         <tr><th>Runner</th><td>TestNG 7.10</td><td class="here">Playwright Test</td></tr>
                         <tr><th>Language detection</th><td>Lingua</td><td class="here">eld</td></tr>
                         <tr><th>Expected data</th><td>Excel matrices</td><td class="here">JSON files</td></tr>
-                        <tr><th>CI shards</th><td>2: lingua and non-lingua</td><td class="here">4, split by test count</td></tr>
+                        <tr><th>CI shards</th><td>4, one per test group</td><td class="here">4, split by test count</td></tr>
                         <tr><th>Reports</th><td>Extent per shard + merged Allure</td><td class="here">Merged HTML + Allure</td></tr>
                         <tr><th>Browsers</th><td>Chrome, Firefox, Edge</td><td class="here">Chromium</td></tr>
                     </tbody>

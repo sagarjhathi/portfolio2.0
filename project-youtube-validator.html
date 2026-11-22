@@ -4,19 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="YouTube multi-language UI validator built with Java 21, Selenium 4 and TestNG. Uses Lingua language detection, Excel-driven expectations and a 2-shard CI pipeline with reports on GitHub Pages.">
+    <meta name="description" content="YouTube multi-language UI validator built with Java 21, Selenium 4 and TestNG. Uses Lingua language detection, Excel-driven expectations and a sharded CI pipeline with reports on GitHub Pages.">
     <title>YouTube Language Validator: Java + Selenium | Sagar Hathi</title>
     <link rel="canonical" href="https://sagarjhathi.github.io/portfolio2.0/project-youtube-validator.html">
     <meta property="og:type" content="article">
     <meta property="og:title" content="YouTube Language Validator: Java + Selenium | Sagar Hathi">
-    <meta property="og:description" content="YouTube multi-language UI validator built with Java 21, Selenium 4 and TestNG. Uses Lingua language detection, Excel-driven expectations and a 2-shard CI pipeline with reports on GitHub Pages.">
+    <meta property="og:description" content="YouTube multi-language UI validator built with Java 21, Selenium 4 and TestNG. Uses Lingua language detection, Excel-driven expectations and a sharded CI pipeline with reports on GitHub Pages.">
     <meta property="og:url" content="https://sagarjhathi.github.io/portfolio2.0/project-youtube-validator.html">
     <meta property="og:image" content="https://sagarjhathi.github.io/portfolio2.0/assets/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="YouTube Language Validator: Java + Selenium | Sagar Hathi">
-    <meta name="twitter:description" content="YouTube multi-language UI validator built with Java 21, Selenium 4 and TestNG. Uses Lingua language detection, Excel-driven expectations and a 2-shard CI pipeline with reports on GitHub Pages.">
+    <meta name="twitter:description" content="YouTube multi-language UI validator built with Java 21, Selenium 4 and TestNG. Uses Lingua language detection, Excel-driven expectations and a sharded CI pipeline with reports on GitHub Pages.">
     <meta name="twitter:image" content="https://sagarjhathi.github.io/portfolio2.0/assets/og-image.png">
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a192f'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%2364ffda' text-anchor='middle'%3ESH%3C/text%3E%3C/svg%3E">
@@ -70,7 +70,7 @@
                         <h1 class="pp-title">YouTube Language Validator<br>Java + Selenium</h1>
                         <p class="pp-lead">
                             A framework that checks whether YouTube really shows the right language and region
-                            settings across 40+ locales. It does not just compare text. It detects the language of what
+                            settings across 50+ locales. It does not just compare text. It detects the language of what
                             is on screen, and checks that the page&rsquo;s language tag agrees.
                         </p>
                         <div class="pp-buttons">
@@ -107,7 +107,7 @@
                 </div>
 
                 <dl class="pp-stats">
-                    <div><dt>Coverage</dt><dd>40+ locales</dd></div>
+                    <div><dt>Coverage</dt><dd>50+ locales</dd></div>
                     <div><dt>Language</dt><dd>Java 21</dd></div>
                     <div><dt>Detection</dt><dd>Lingua</dd></div>
                     <div><dt>CI/CD</dt><dd>GitHub Actions</dd></div>
@@ -140,13 +140,13 @@
                     <li>Filter labels on the search results page</li>
                     <li>The <code>&lt;html lang&gt;</code> attribute</li>
                     <li>The country code shown on the YouTube logo for each region</li>
-                    <li>UI stability across screen sizes and layouts</li>
+                    
                 </ul>
                 <div class="pp-metrics reveal">
-                    <div class="pp-metric"><strong>40+</strong><span>languages and regions validated</span></div>
-                    <div class="pp-metric"><strong>8</strong><span>tests: 3 with language detection, 5 without</span></div>
+                    <div class="pp-metric"><strong>50+</strong><span>languages and regions validated</span></div>
+                    <div class="pp-metric"><strong>9</strong><span>tests: 3 with language detection, 6 without</span></div>
                     <div class="pp-metric"><strong>3</strong><span>signals cross-checked: text, detected language, html lang</span></div>
-                    <div class="pp-metric"><strong>2</strong><span>parallel CI shards, then one publish job</span></div>
+                    <div class="pp-metric"><strong>4</strong><span>parallel CI shards, one per test group, then one publish job</span></div>
                 </div>
             </div>
         </section>
@@ -176,8 +176,8 @@
                     <article class="pp-card reveal">
                         <span class="tag">CI</span>
                         <h3>Coverage that follows the trigger</h3>
-                        <p>Pushes and pull requests run a reduced set of languages for fast feedback. The nightly run
-                            covers every language and region.</p>
+                        <p>How many languages and regions a run covers is configurable, so pushes can use a smaller set for
+                            fast feedback and the nightly run can cover them all.</p>
                     </article>
                     <article class="pp-card reveal">
                         <span class="tag">Reliability</span>
@@ -188,8 +188,9 @@
                     <article class="pp-card reveal">
                         <span class="tag">Structure</span>
                         <h3>Split by intent</h3>
-                        <p>Tests are tagged into <code>lingua</code> and <code>non-lingua</code> groups that run as
-                            separate parallel shards, so detection-heavy tests do not slow the rest.</p>
+                        <p>Tests are tagged by area (side menu expanded, side menu collapsed, settings and region, search filter)
+                            and these groups run as separate parallel CI shards. They are also tagged <code>lingua</code>
+                            or <code>non-lingua</code>, so the detection-heavy tests can be run on their own.</p>
                     </article>
                     <article class="pp-card reveal">
                         <span class="tag">Locale</span>
@@ -226,7 +227,7 @@
         <section class="pp-section" id="pipeline">
             <div class="container">
                 <h2 class="pp-h2"><span class="num">04.</span> CI pipeline</h2>
-                <p class="pp-text">One workflow runs the two test groups in parallel and publishes a single report hub.</p>
+                <p class="pp-text">One workflow runs the four test groups in parallel and publishes a single report hub.</p>
                 <ol class="pp-pipeline reveal">
                     <li>
                         <h3>1 &middot; Trigger</h3>
@@ -234,12 +235,12 @@
                     </li>
                     <li>
                         <h3>2 &middot; Choose coverage</h3>
-                        <p>Reduced languages for pushes and pull requests. Every language and region at night.</p>
+                        <p>How many languages and regions a run covers is a setting, so pushes and the nightly run can use different sizes.</p>
                     </li>
                     <li>
                         <h3>3 &middot; Parallel shards</h3>
                         <p>Each shard runs a tagged group and stores its Extent run folder and Allure results.</p>
-                        <div class="fan"><span>lingua</span><span>non-lingua</span></div>
+                        <div class="fan"><span>side-menu-expanded</span><span>side-menu-collapsed</span><span>settings-region</span><span>global-filter</span></div>
                     </li>
                     <li>
                         <h3>4 &middot; Publish</h3>
@@ -305,7 +306,7 @@
                         <tr><th>Runner</th><td class="here">TestNG 7.10</td><td>Playwright Test</td></tr>
                         <tr><th>Language detection</th><td class="here">Lingua</td><td>eld</td></tr>
                         <tr><th>Expected data</th><td class="here">Excel matrices</td><td>JSON files</td></tr>
-                        <tr><th>CI shards</th><td class="here">2: lingua and non-lingua</td><td>4, split by test count</td></tr>
+                        <tr><th>CI shards</th><td class="here">4, one per test group</td><td>4, split by test count</td></tr>
                         <tr><th>Reports</th><td class="here">Extent per shard + merged Allure</td><td>Merged HTML + Allure</td></tr>
                         <tr><th>Browsers</th><td class="here">Chrome, Firefox, Edge</td><td>Chromium</td></tr>
                     </tbody>
