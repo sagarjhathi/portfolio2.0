@@ -6,6 +6,8 @@ const navLinks = document.querySelector('.nav-links'); // This is the container
 const navItems = document.querySelectorAll('.nav-links ol li a'); // Individual links
 const sections = document.querySelectorAll('section');
 const fadeTags = document.querySelectorAll('.fade-in-up');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const scrollBehavior = reduceMotion ? 'auto' : 'smooth';
 
 // --- 0. Setup Global Effects (Spotlight) ---
 function initSpotlight() {
@@ -29,12 +31,6 @@ function initSpotlight() {
 
         // Reveal the spotlight
         spotlight.style.opacity = '1';
-
-        // Also reveal individual card borders if they exist
-        const cards = document.querySelectorAll('.project-card::before'); // Pseudo-elements can't be targeted directly via JS style, but the CSS var handles it
-        // However, we want to control opacity of the card glow separately if we want to save performance, 
-        // but with CSS vars it propagates automatically. 
-        // We just need to make sure the CSS opacity rule is active.
     });
 
     // Handle "Leave Window"
@@ -104,7 +100,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const targetId = this.getAttribute('href');
         const targetSection = document.querySelector(targetId);
         if (targetSection) {
-            targetSection.scrollIntoView({ behavior: 'smooth' });
+            targetSection.scrollIntoView({ behavior: scrollBehavior });
         }
     });
 });
@@ -135,5 +131,5 @@ document.addEventListener('click', (e) => {
     const details = btn.closest('details');
     if (!details) return;
     details.open = false;
-    details.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    details.scrollIntoView({ behavior: scrollBehavior, block: 'center' });
 });

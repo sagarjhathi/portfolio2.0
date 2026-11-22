@@ -22,7 +22,7 @@
   <rect width="1280" height="720" fill="url(#glow2)"/>
 
   <g font-family="'Inter','Segoe UI',Arial,sans-serif">
-    <text x="70" y="110" font-family="'Fira Code',Consolas,monospace" font-size="26" fill="#64ffda" letter-spacing="2">YOUTUBE &#183; 40+ LOCALES</text>
+    <text x="70" y="110" font-family="'Fira Code',Consolas,monospace" font-size="26" fill="#64ffda" letter-spacing="2">YOUTUBE &#183; 50+ LOCALES</text>
     <text x="70" y="215" font-size="86" font-weight="800" fill="#e6f1ff">Language</text>
     <text x="70" y="310" font-size="86" font-weight="800" fill="#e6f1ff">Validator</text>
     <text x="70" y="378" font-size="36" fill="#8892b0">Java + Selenium</text>
@@ -66,7 +66,7 @@
         <rect x="32" y="364" width="406" height="56" rx="10" fill="#112240"/>
         <text x="54" y="400" fill="#ccd6f6">Fran&#231;ais</text>
         <text x="414" y="400" text-anchor="end" fill="#64ffda">fr &#10003;</text>
-        <text x="32" y="464" font-size="20" fill="#8892b0">8 checks &#183; html lang verified</text>
+        <text x="32" y="464" font-size="20" fill="#8892b0">9 checks &#183; html lang verified</text>
       </g>
     </g>
   </g>

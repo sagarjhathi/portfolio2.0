@@ -64,7 +64,7 @@
         <rect x="32" y="390" width="406" height="56" rx="10" fill="#112240"/>
         <text x="54" y="426" fill="#ccd6f6">Galaxy A15</text>
         <text x="414" y="428" text-anchor="end" font-size="28" fill="#64ffda">&#10003;</text>
-        <text x="32" y="478" font-size="20" fill="#8892b0">8 tests &#183; 0 mismatches</text>
+        <text x="32" y="478" font-size="20" fill="#8892b0">8 filter test types</text>
       </g>
     </g>
   </g>
