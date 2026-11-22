@@ -1,4 +1,7 @@
 :root {
+    --cursor-x: 0px;
+    --cursor-y: 0px;
+
     /* --- DARK THEME (Original) --- */
     --navy: #0a192f;
     --light-navy: #112240;
@@ -8,25 +11,6 @@
     --lightest-slate: #ccd6f6;
     --white: #e6f1ff;
     --green: #64ffda;
-
-    /* --- WHITE THEME (Creative Clean) --- unused experiment, kept for reference
-       Theory:
-       - Backgrounds: Off-white (#f8f9fa) for main to reduce glare, Pure white (#ffffff) for cards to pop.
-       - Text: Deep Navy/Slate (#334155, #1e293b) -> High contrast and professional, softer than pure black.
-       - Accents: Teal (#0d9488) -> Vibrant, trustworthy, and matches the "creative" vibe.
-
-       --navy: #f8f9fa;
-       --light-navy: #ffffff;
-       --lightest-navy: #e2e8f0;
-       --slate: #64748b;
-       --light-slate: #475569;
-       --lightest-slate: #1e293b;
-       --white: #0f172a;
-       --green: #0d9488;
-       --spotlight-rgb: 13, 148, 136;
-       --card-glow-rgb: 13, 148, 136;
-       --browser-header-bg: #e2e8f0;
-    */
 
     /* Helper variables for RBGA usage */
     --shadow-rgb: 2, 12, 27;
@@ -776,12 +760,7 @@ p {
 
 /* ... Existing Styles ... */
 
-/* --- NEW: Spotlight Effect --- */
-:root {
-    /* Add this to existing variables */
-    --cursor-x: 0px;
-    --cursor-y: 0px;
-}
+/* --- Spotlight Effect (--cursor-x/--cursor-y are set from script.js) --- */
 
 /* The Spotlight Overlay */
 /* We will use a pseudo-element on the body or a fixed div to create the flashlight effect across the whole page */

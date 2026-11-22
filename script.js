@@ -29,12 +29,6 @@ function initSpotlight() {
 
         // Reveal the spotlight
         spotlight.style.opacity = '1';
-
-        // Also reveal individual card borders if they exist
-        const cards = document.querySelectorAll('.project-card::before'); // Pseudo-elements can't be targeted directly via JS style, but the CSS var handles it
-        // However, we want to control opacity of the card glow separately if we want to save performance, 
-        // but with CSS vars it propagates automatically. 
-        // We just need to make sure the CSS opacity rule is active.
     });
 
     // Handle "Leave Window"
