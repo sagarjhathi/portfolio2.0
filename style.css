@@ -2871,3 +2871,20 @@ body.no-scroll .header {
 .hero-grid .hero-desc {
     max-width: 620px;
 }
+
+/* --- Reduced motion: homepage reveals, smooth scrolling and the cursor spotlight --- */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .fade-in-up {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .spotlight-overlay {
+        display: none;
+    }
+}

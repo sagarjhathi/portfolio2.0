@@ -6,6 +6,8 @@ const navLinks = document.querySelector('.nav-links'); // This is the container
 const navItems = document.querySelectorAll('.nav-links ol li a'); // Individual links
 const sections = document.querySelectorAll('section');
 const fadeTags = document.querySelectorAll('.fade-in-up');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const scrollBehavior = reduceMotion ? 'auto' : 'smooth';
 
 // --- 0. Setup Global Effects (Spotlight) ---
 function initSpotlight() {
@@ -98,7 +100,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const targetId = this.getAttribute('href');
         const targetSection = document.querySelector(targetId);
         if (targetSection) {
-            targetSection.scrollIntoView({ behavior: 'smooth' });
+            targetSection.scrollIntoView({ behavior: scrollBehavior });
         }
     });
 });
@@ -129,5 +131,5 @@ document.addEventListener('click', (e) => {
     const details = btn.closest('details');
     if (!details) return;
     details.open = false;
-    details.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    details.scrollIntoView({ behavior: scrollBehavior, block: 'center' });
 });
