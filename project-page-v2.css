@@ -561,3 +561,39 @@
         transition: none;
     }
 }
+
+@media (min-width: 901px) {
+    .pp-pipeline>li:has(.fan) {
+        flex-grow: 1.7;
+    }
+}
+
+@media (max-width: 900px) and (min-width: 561px) {
+    .pp-tools > :last-child:nth-child(odd),
+    .pp-links > :last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+    }
+}
+
+/* touch-friendly tap targets and readable minimum text size */
+@media (pointer: coarse), (max-width: 900px) {
+    .pp-toc a,
+    .pp-nav a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+    }
+}
+
+.pp-card .tag,
+.pp-challenge small,
+.pp-pipeline .fan span {
+    font-size: 0.75rem;
+}
+
+/* landscape phones: show the title before the mockup */
+@media (max-width: 900px) and (max-height: 500px) and (orientation: landscape) {
+    .pp-hero-visual {
+        order: 0;
+    }
+}

@@ -1107,6 +1107,7 @@ p {
 .project-thumb {
     display: block;
     width: 100%;
+    height: auto;
     aspect-ratio: 16 / 9;
     object-fit: cover;
 }
@@ -2271,6 +2272,8 @@ p {
 
 .contact-links {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    min-width: 0;
     gap: 14px;
     list-style: none;
     margin: 0;
@@ -2279,6 +2282,7 @@ p {
 
 .contact-link {
     display: flex;
+    min-width: 0;
     align-items: center;
     gap: 16px;
     width: 100%;
@@ -2413,7 +2417,7 @@ p {
 
 @media (max-width: 900px) {
     .contact-card {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 36px;
         padding: 40px 32px;
     }
@@ -2887,4 +2891,37 @@ body.no-scroll .header {
     .spotlight-overlay {
         display: none;
     }
+}
+
+.contact-copy {
+    min-width: 0;
+}
+
+/* touch-friendly tap targets and readable minimum text size */
+@media (pointer: coarse), (max-width: 900px) {
+    .footer-nav a,
+    .footer-logo,
+    .to-top,
+    .featured-links a,
+    .job-more summary,
+    .job-less,
+    .skip-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+    }
+
+    .hamburger {
+        padding: 10px 8px;
+        box-sizing: content-box;
+        margin-right: -8px;
+    }
+}
+
+.tile small {
+    font-size: 12px;
+}
+
+.hero-term .code-bar em {
+    font-size: 12px;
 }

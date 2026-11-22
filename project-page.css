@@ -107,7 +107,7 @@
 
 .pp-stats dt {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--slate);
@@ -116,6 +116,7 @@
 
 .pp-stats dd {
     margin: 0;
+    overflow-wrap: break-word;
     color: var(--lightest-slate);
     font-weight: 600;
 }
@@ -361,7 +362,7 @@
     }
 
     .pp-stats {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .pp-cards,
@@ -409,4 +410,14 @@
     height: 100%;
     border: 0;
     display: block;
+}
+
+@media (max-width: 400px) {
+    .pp-stats div {
+        padding: 14px 12px;
+    }
+
+    .pp-stats dd {
+        font-size: 0.92rem;
+    }
 }
